@@ -1,0 +1,86 @@
+*
+{
+	font-family: 微軟正黑體;
+}
+
+div#mainchunk
+{
+	position:static;
+	width:80vw;
+	background-color:#050505;
+	height: 65vh;
+	text-align: center;
+	margin: 5vh 10vw 5vh 10vw;
+	padding-top: 15vh;
+}
+
+.bigtitle
+{
+	font-size: 36px;
+	font-weight: bold;
+	color: white;
+}
+
+.dfttext
+{
+	font-size: 18px;
+	color: #8c8c8c;
+	line-height: 28px;
+}
+
+button.bigstyle1
+{
+	width: 250px;
+	height: 50px;
+	color: #333333;
+	font-size: 24px;
+	margin-right: 24px;
+	margin-left:24px; 
+	background-color: #d6d6d6;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 4px;
+	transition-duration:0.4s;
+}
+
+button.bigstyle1:hover
+{
+	background-color: #a8a8a8;
+	color: white;
+}
+
+button.bigstyle2
+{
+	width: 250px;
+	height: 50px;
+	color: #dbdbdb;
+	font-size: 24px;
+	margin-right: 24px;
+	margin-left:24px; 
+	background-color: #194284;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 4px;
+	transition-duration:0.4s;
+}
+
+button.bigstyle2:hover
+{
+	background-color: #4288f7;
+	color: white;
+}
+
+div#footer
+{
+	border-top: 1px solid #d6d6d6;
+}
+
+.smalltext
+{
+	font-size: 16px;
+	color: #8c8c8c;
+	line-height: 20px;
+	text-align: left;
+}

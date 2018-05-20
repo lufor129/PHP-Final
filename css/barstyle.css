@@ -1,0 +1,210 @@
+ul#navibar
+{
+	background-color: #192b47;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	position: fixed;
+	float: left;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+li.navi
+{
+	display: inline;
+	float: left;
+	border-right: 1px solid white;
+}
+
+li.navi a
+{
+	display: block;
+	padding: 8px 16px 8px 16px;
+	background-color: #192b47;
+	text-align: center;
+	font-family: 微軟正黑體;
+	font-size: 20px;
+	text-decoration: none;
+	padding: 10px 30px;
+	color: white;
+	font-weight: bold;
+	transition-duration:0.4s;
+}
+
+li.navi a:hover
+{
+	background-color: #3e6bb2;
+}
+
+a.fgtpwd
+{
+	display: block;
+	margin-left: 35px;
+	text-align: left;
+	font-family: 微軟正黑體;
+	text-decoration: none;
+	color: #4286f4;
+	transition-duration:0.4s;
+	width: 80px;
+}
+a.fgtpwd:hover
+{
+	font-weight: bold;
+	color: #004bc6;
+}
+
+.logbtn
+{
+	padding: 8px 16px 8px 16px;
+	background-color: #2d6821;
+	text-align: center;
+	font-family: 微軟正黑體;
+	font-size: 20px;
+	text-decoration: none;
+	padding: 10px 30px;
+	color: white;
+	font-weight: bold;
+	border:none;
+	cursor: pointer;
+	transition-duration:0.4s;
+}
+
+.logbtn:hover
+{
+	background-color: #46a334;
+}
+
+li.signup
+{
+	display: inline;
+	float: left;
+	border-right: 1px solid white;
+}
+
+.signupbtn
+{
+	display: block;
+	padding: 8px 16px 8px 16px;
+	background-color: #2d6821;
+	text-align: center;
+	font-family: 微軟正黑體;
+	font-size: 20px;
+	text-decoration: none;
+	padding: 10px 30px;
+	color: white;
+	font-weight: bold;
+	transition-duration:0.4s;
+}
+
+.signupbtn:hover
+{
+	background-color: #46a334;
+}
+
+#logwindow
+{
+	position: fixed;
+	margin-left: 70%;
+	margin-top: 60px;
+	background-color: white;
+	border: 1px solid gray;
+	border-radius: 5px;
+	width: 400px;
+	height: 200px;
+	font-family: 微軟正黑體;
+	text-align: center;
+	padding-top: 18px;
+	color: black;
+	display: none;
+}
+
+.inp
+{
+	width: 75%;
+	height: 32px;
+	border-radius: 2px;
+	padding: 2px 20px;
+	border: 1px solid gray;
+	margin-bottom: 15px;
+	font-family: 微軟正黑體;
+	transition-duration:0.4s;
+}
+
+.inp:focus
+{
+	background-color: #bababa;
+}
+
+.subm
+{
+	margin-top: 3%;
+	width: 85%;
+	height: 32px;
+	cursor: pointer;
+	border-radius: 2px;
+	border:1px solid gray;
+	background-color: #d8d8d8;
+	font-family: 微軟正黑體;
+	transition-duration:0.4s;
+}
+
+.subm:hover
+{
+	background-color: #a3a3a3;
+	color: white;
+	font-weight: bold;
+}
+
+#searchbtn
+{
+	height: 26px;
+	border-radius: 15px;
+	padding: 2px 10px;
+	border: 1px solid gray;
+	margin-left: 30px;
+	margin-top: 7px;
+	margin-bottom: 0px;
+	font-family: 微軟正黑體;
+	width : 100px ;
+	float: left;
+	background-color: gray;
+	transition-duration:0.4s;
+}
+
+#searchbtn::placeholder
+{
+	color: #f2f2f2;
+}
+
+#searchbtn:hover::placeholder
+{
+	color: gray;
+}
+
+#searchbtn:focus::placeholder
+{
+	color: #727272;
+}
+
+#searchbtn:focus
+{
+	width: 400px;
+	background-color: white;
+}
+
+#searchbtn:hover
+{
+	width: 400px;
+	background-color: white;
+}
+
+.test
+{
+	font-family: 微軟正黑體;
+	font-size: 20px;
+	font-weight: bold;
+}
