@@ -10,22 +10,28 @@
 		<?php session_start(); ?>
 	</head>
 	<body>
-		<div style = "width:100%;height:40px;">
+		<div style = "width:100%;height:48px;">
 			<ul id = "navibar">
-				<li class = "navi"><a href="index.php" target = "blank">肥宅漫畫</a></li>
-				<li class = "navi"><a href="comics.php" target = "blank">看漫畫</a></li>
-				<li class = "navi"><a href="search.php" target = "blank">搜尋漫畫</a></li>
-				<li class = "navi"><a href="favorite.php" target = "blank">我的收藏</a></li>
-				<li class = "navi"><a href="informations.php" target = "blank">平台說明</a></li>
+				<li class = "navi"><a href="index.php">肥宅漫畫</a></li>
+				<li class = "navi"><a href="comics.php" >看漫畫</a></li>
+				<li class = "navi"><a href="search.php" >搜尋漫畫</a></li>
+				<li class = "navi"><a href="favorite.php" >我的收藏</a></li>
+				<li class = "navi"><a href="informations.php" >平台說明</a></li>
 
 				<form action = "" method = "post">
 					<input type = "text" id = "searchbtn" name = "search" placeholder = "🔎 找漫畫?">
 				</form>	
 
-				<li style = "float:right"><button class = "logbtn" onClick = "logwindow()">登入</button></li>
-					<script type="text/javascript">function logwindow(){ $("#logwindow").slideToggle();}</script>
+				<li style = "float:right"><a class = "signupbtn"  href="login.php">登入</a></li>
+					<script type="text/javascript">
+					$(function(){
+						$(".logbtn").click(function(){
+							$("#logwindow").slideToggle();
+						});
+					});
+					</script>
 
-				<li class = "signup" style = "float:right"><a href="sign.php" target = "blank" class = "signupbtn">註冊</a></li>
+				<li class = "signup" style = "float:right"><a href="register.php" class = "signupbtn">註冊</a></li>
 			</ul>
 
 			<div id = "logwindow">

@@ -4,7 +4,7 @@
         "root",
         "s2007tyu",
         "php-final"
-    )
+    );
 
     if($link){
 
