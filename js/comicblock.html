@@ -15,10 +15,12 @@
             box-shadow: 1px 1px 1px 1px gray;
             display: inline-block;
             margin: 25px;
+            border:2px transparent solid;
         }
 
         div.comicblock:hover {
             border: 2px #FF4400 solid;
+            box-shadow: none;
         }
 
         div.pic img {
@@ -62,7 +64,6 @@
         div#comichead img {
             height: 465px;
             width: 465px;
-            margin-top:20px;
         }
 
         div.modal-header {
@@ -125,7 +126,7 @@
         </div>
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header" id="comichead">
                     <img src="" alt="">
