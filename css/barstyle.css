@@ -8,6 +8,7 @@ ul#navibar
 	position: fixed;
 	float: left;
 	width: 100%;
+	height:48px;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -28,7 +29,7 @@ li.navi a
 	background-color: #192b47;
 	text-align: center;
 	font-family: 微軟正黑體;
-	font-size: 20px;
+	font-size: 19px;
 	text-decoration: none;
 	padding: 10px 30px;
 	color: white;
@@ -64,7 +65,7 @@ a.fgtpwd:hover
 	background-color: #2d6821;
 	text-align: center;
 	font-family: 微軟正黑體;
-	font-size: 20px;
+	font-size: 19px;
 	text-decoration: none;
 	padding: 10px 30px;
 	color: white;
@@ -93,7 +94,7 @@ li.signup
 	background-color: #2d6821;
 	text-align: center;
 	font-family: 微軟正黑體;
-	font-size: 20px;
+	font-size: 19px;
 	text-decoration: none;
 	padding: 10px 30px;
 	color: white;
