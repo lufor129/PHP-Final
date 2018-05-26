@@ -45,3 +45,11 @@ input#submitbotton {
 .login #enroll {
     float: right;
 }
+body a{
+    text-decoration: none;
+    color:black;
+}
+body a:hover{
+    text-decoration: none;
+    color:gray;
+}

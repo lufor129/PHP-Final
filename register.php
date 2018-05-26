@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <h1 id="title">肥宅漫畫</h1>
+    <a href="in.php"><h1 id="title">肥宅漫畫</h1></a>
     <div class="content">
         <div class="jumbotron jumbotron-fluid">
             <div class="login">
