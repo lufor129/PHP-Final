@@ -9,6 +9,7 @@
     <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../Boostrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="../Boostrap/js/bootstrap.min.js"></script>
     <style>
         div.comicblock {
@@ -182,6 +183,9 @@
             $("div#profile").html(html);
         });  
     });
+    $(function () {
+  $('[data-toggle="popover"]').popover()
+})
 </script>
 
 </html>

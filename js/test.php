@@ -9,6 +9,7 @@
     <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../Boostrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="../Boostrap/js/bootstrap.min.js"></script>
     <style>
         div.comicblock {
@@ -110,7 +111,6 @@
 
 <body>
     <div class="cont">
-
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
@@ -124,14 +124,55 @@
                 </div>
                 <div class="modal-body">
                     <h2></h2>
-                    <button id="favorite" class="btn btn-danger">
-                        <i class="fa fa-heart-o"></i>
-                        加入最愛
-                    </button>
-                    <button id="joincart" class="btn btn-success">
-                        <i class="fa fa-shopping-cart"></i>
-                        加入購物車
-                    </button>
+                    <?php
+                        session_start();
+                        if($_SESSION["login"]!=true){
+                            echo '<button id="favorite" class="btn btn-danger">
+                            <i class="fa fa-heart-o"></i>
+                            請先登入
+                        </button>
+                        <button id="joincart" class="btn btn-success">
+                            <i class="fa fa-shopping-cart"></i>
+                            請先登入
+                        </button>';
+                        }else{
+                            require_once "dbconnection.php";
+                            $comic_name=$_GET["comic_name"];
+                            $user=$_SESSION["user"];
+                    
+                            $sql="SELECT * love where love_product = '$comic_name' AND love_user = '$user'";
+                            $result=$link->query($sql);
+                            if($result->row_nums>0){
+                                echo '<button id="favorite" class="btn btn-danger">
+                                <i class="fa fa-heart-o"></i>
+                                已加入我的最愛
+                            </button>';
+                            }else{
+                                echo '<button id="favorite" class="btn btn-danger">
+                                <i class="fa fa-heart-o"></i>
+                                加入最愛
+                            </button>';
+                            }
+
+                            $sql="SELECT * cart where cart_product = '$comic_name' AND cart_user = '$user'";
+                            $result=$link->query($sql);
+                            if($result->row_nums>0){
+                                echo '<button id="joincart" class="btn btn-success">
+                                <i class="fa fa-shopping-cart"></i>
+                                已放入購物車
+                            </button>';
+                            }else{
+                                echo '<button id="joincart" class="btn btn-success">
+                                <i class="fa fa-shopping-cart"></i>
+                                放入購物車
+                            </button>';
+                            }
+
+                            $link->close();
+
+                        }
+
+                    ?>
                 </div>
                 <div class="footer">
                     <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
@@ -203,7 +244,34 @@
             }
             $("div#profile").html(html);
         });
+        $("#favorite").click(function(){
+            var page="part/love.php";
+            var comic_name=$(this).parent().find("h2").text();
+            
+            $.get(
+                page,
+                {"comic_name":comic_name},
+                function(result){
+                    $(this).text(result);
+                }
+            );
+        });
+        $("#joincart").click(function(){
+            var page="part/cart.php";
+            var comic_name=$(this).parent().find("h2").text();
+            
+            $.get(
+                page,
+                {"comic_name":comic_name},
+                function(result){
+                    $(this).text(result);
+                }
+            );
+        });
+
     });
+
+
 </script>
 
 </html>

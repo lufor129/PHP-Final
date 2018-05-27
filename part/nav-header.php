@@ -37,18 +37,17 @@
                   <ul class="navbar-nav mr-auto">
                     <?php
                         session_start();
-                        
                         if($_SESSION["login"]!=true){
                             echo '<li class="nav-item">';
                             echo '<a class="nav-link" href="#">歡迎! 訪客</a>';
                             echo '</li>';
                         }elseif($_SESSION["user"]=="root"){
                             echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="admin-data.php">歡迎! 管理者</a>';
+                            echo '<a class="nav-link" href="back-revise.php">歡迎! 管理者</a>';
                             echo '</li>';
                         }else{
                             echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="user-data.php">歡迎! '.$_SESSION["user"].'</a>';
+                            echo '<a class="nav-link" href="back-revise.php">歡迎! '.$_SESSION["user"].'</a>';
                             echo '</li>';
                         }
                     ?>
