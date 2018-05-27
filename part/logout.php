@@ -9,6 +9,6 @@ session_destroy();
 
 //導到login.php
 
-header("Location:login.html");
+header("Location:login.php");
 
 ?>
