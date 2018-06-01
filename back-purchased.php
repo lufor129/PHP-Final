@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/comicblock.css">
     <link rel="stylesheet" href="css/back.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -23,27 +24,15 @@
         }
     ?>
     <div class="wrap">
-        <div class="card" style="margin-top:5%;">
-            <h3 class="card-header"><i class="fa fa-bitcoin"></i> 充值</h3>
-            <div class="card-body">
-                <h5 class="card-title">DEPOSIT</h5>
-                <p class="card-text">好好想想，你不充值，怎麼能變的更強呢?</p><br>
-                <form action="user-monry.php" method="get">
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-text">NTD</span>
-                        <input type="text" class="form-control" placeholder="能充一個億是最好的" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <button class="btn btn-success" type="submit">充值</button>
-                    </div>
-                </form>
-                <br>
-                <hr>
-                <br>
-                <h3>目前儲值金: 2333</h3>
-            </div>
+        <nav class="navbar navbar-light " style="background-color: #90EE90;">
+            <span class="navbar-brand mb-0 h1">My purchased</span>
+        </nav>
+        <div class="content">
+            <?php require_once "js/test.php"  ?>
         </div>
     </div>
 </body>
 </html>
 <script>
-    $("#deposit").addClass("active");
+    $("#purchased").addClass("active");
 </script>

@@ -6,107 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="http://how2j.cn/study/js/jquery/2.0.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="../Boostrap/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="../Boostrap/js/bootstrap.min.js"></script>
-    <style>
-        div.comicblock {
-            box-shadow: 1px 1px 1px 1px gray;
-            display: inline-block;
-            margin: 25px;
-            border:2px transparent solid;
-        }
-
-        div.comicblock:hover {
-            border: 2px #FF4400 solid;
-            box-shadow: none;
-        }
-
-        div.pic img {
-            width: 250px;
-            height: 250px;
-        }
-
-        div.message {
-            padding: 10px;
-        }
-
-        h2.name {
-            color: #FF4400;
-            font-family: 微軟正黑體;
-            font-size: 25px;
-            font-weight: 9000;
-        }
-
-        h5.price {
-            color: gray;
-            font-size: 20px;
-        }
-
-        span img {
-            width: 20px;
-            height: 20px;
-        }
-
-        span.heart {
-            font-size: 18px;
-        }
-
-        span.heat {
-            float: right;
-        }
-
-        div.clear {
-            clear: both;
-        }
-        
-        div#comichead img {
-            height: 465px;
-            width: 465px;
-        }
-
-        div.modal-header {
-            position: relative;
-        }
-
-        div.modal-header button {
-            position: absolute;
-            top: 40px;
-            right: 40px;
-            color: white;
-        }
-
-        div.modal-body button {
-            width: 45%;
-            margin: 10px;
-        }
-        div.tab-content{
-            padding:10px;
-        }
-        div#profile{
-            padding:20px;
-        }
-        div.box{
-            border:solid black 1px;
-            text-align: center;
-            font-size:40px;
-            margin:10px;
-            width:87px;
-            height:60px;
-            display: inline-block;
-        }
-        div.box a{
-            text-decoration: none;
-            color:black;
-            display: block;
-        }
-        div.box:hover{
-            background: seashell;
-        }
-        
-    </style>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>

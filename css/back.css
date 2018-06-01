@@ -1,0 +1,29 @@
+html{
+    background:#F5F5F5;
+    font-family:微軟正黑體;
+}
+div.wrap{
+    float:right;
+    width:80%;
+    padding:5%;
+    padding-top:2%;
+}
+h3.card-header{
+    background:#EEF2F4;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+button.btn-success{
+    width:100px;
+}
+div.content{
+    width:87%;
+    margin:0 auto;
+    margin-top:20px;
+    margin-bottom:20px;
+    box-shadow:2px 2px 2px 2px gray;
+}
