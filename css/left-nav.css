@@ -1,0 +1,34 @@
+html{
+    height: 100%;
+}
+nav.user-nav{
+    height:100%;
+    width:20%;
+    background:#37474F;
+    position:fixed;
+    left:0px;
+}
+
+div.list-group a{
+    background: #37474F;
+    color: white;
+    height: 5%;
+}
+div.list-group a:hover{
+    background: #3e6bb2;
+}
+div.peopleimg{
+    height: 20%;
+    background:#263238;
+    padding:30px;
+}
+div.peopleimg img{
+    width:70px;
+    height:70px;
+    stroke:white;
+}
+div.peopleimg p{
+    color:white;
+    font-weight: bold;
+    font-size: 25px;
+}

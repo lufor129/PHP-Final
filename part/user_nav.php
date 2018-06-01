@@ -8,42 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/left-nav.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <style>
-        html{
-            height: 100%;
-        }
-        nav.user-nav{
-            height:100%;
-            width: 20%;
-            background:#37474F;
-            position:fixed;
-        }
-
-        div.list-group a{
-            background: #37474F;
-            color: white;
-            height: 5%;
-        }
-        div.list-group a:hover{
-            background: #3e6bb2;
-        }
-        div.peopleimg{
-            height: 20%;
-            background:#263238;
-            padding:30px;
-        }
-        div.peopleimg img{
-            width:70px;
-            height:70px;
-            stroke:white;
-        }
-        div.peopleimg p{
-            color:white;
-            font-weight: bold;
-            font-size: 25px;
-        }
-    </style>
 </head>
 <body>
     <nav class="user-nav">
