@@ -41,31 +41,31 @@
         <div class="card" style="margin-top:5%;">
             <h3 class="card-header"><i class="fa fa-drivers-license-o"></i> 修改資料</h3>
             <div class="card-body">
-                <form action="part/update.php" method="post">
+                <form action="part/update.php" method="post" enctype="multipart/form-data">
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">帳號</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="請輸入帳號" value="<?php echo $account ?>">
+                    <input type="text" class="form-control" placeholder="請輸入帳號" name="account" value="<?php if(isset($account)) echo $account; ?>">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">密碼</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="請輸入密碼" value="<?php echo $password ?>">
+                    <input type="text" class="form-control" placeholder="請輸入密碼" name="password" value="<?php if(isset($password)) echo $password; ?>">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">郵件</span>
                     </div>
-                    <input type="email" class="form-control" placeholder="請輸入郵件" value="<?php echo $email ?>">
+                    <input type="email" class="form-control" placeholder="請輸入郵件" name="email" value="<?php if(isset($email))echo $email; ?>">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">頭像</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="pic">
                         <label class="custom-file-label" for="inputGroupFile01">請上傳頭像</label>
                     </div>
                 </div>

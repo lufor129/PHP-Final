@@ -103,23 +103,8 @@
         <div style="height:200px"></div>
 </body>
 <script>
-    var p='    <div class="comicblock">\
-        <div class="pic">\
-            <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">\
-                <img src="https://cdn.free.com.tw/blog/wp-content/uploads/2014/08/Placekitten480-g.jpg" alt="" id="comicIMG">\
-            </a>\
-        </div>\
-        <div class="message">\
-            <h2 class="name">貓咪同學有交流障礙</h2>\
-            <h5 class="price">價格: 456</h5>\
-            <span class="heart">\
-                <img src="http://abgne.tw/wp-content/uploads/2014/01/css3-draw-heart-icon-2.png" alt=""> 1233</span>\
-            <span class="heat">\
-                <img src="http://pic.qiantucdn.com/58pic/13/84/39/28Q58PICwI4_1024.png!qt324" alt="">4442</span>\
-            <div class="clear"></div>\
-        </div>\
-    </div>';
-    for(var i=0;i<7;i++){
+    var p='';
+    for(var i=0;i<8;i++){
         p+= ' <div class="comicblock">\
         <div class="pic">\
             <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal">\
@@ -142,8 +127,8 @@
         $(".comicblock").click(function () {
             $("div#comichead img").attr("src", $(this).find("#comicIMG").attr("src"));
             $(".modal-body h2").html($(this).find(".name").html());
-            var html='<div class="box"><a href="javascript:void(0)">'+1+'</a></div>';
-            for(var i=2;i<101;i++){
+            var html='';
+            for(var i=1;i<101;i++){
                 html+='<div class="box"><a href="javascript:void(0)">'+i+'</a></div>';
             }
             $("div#profile").html(html);
