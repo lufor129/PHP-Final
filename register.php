@@ -17,7 +17,7 @@
     <div class="content">
         <div class="jumbotron jumbotron-fluid">
             <div class="login">
-                <form action="index.php" method="get">
+                <form action="register.php" method="post" enctype="multipart/form-data">
                     <h1>REGISTER</h1>
                     <div class="form_field">
                         <h4>account</h4>
@@ -30,8 +30,11 @@
                     </div>
 
                     <div class="form_field">
-                        <h4>confirm-password</h4>
-                        <input type="password" name="confirm-password" class="form-control" id="" required>
+                        <h4>PHOTO</h4>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" required>
+                            <label class="custom-file-label" for="customFile">Choose Profile Photo</label>
+                        </div>
                     </div>
                     <p></p>
                     <span id="enroll">
@@ -81,3 +84,9 @@
 
 ?>
 </html>
+<script>
+    $('.custom-file-input').on('change', function() { 
+        let fileName = $(this).val().split('\\').pop(); 
+        $(this).next('.custom-file-label').addClass("selected").html(fileName); 
+    });
+</script>

@@ -42,7 +42,7 @@
                         session_start();
                         if($_SESSION["login"]!=true){
                             echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="#">歡迎! 訪客</a>';
+                            echo '<a class="nav-link" href="back-revise.php">歡迎! 訪客</a>';
                             echo '</li>';
                         }elseif($_SESSION["user"]=="root"){
                             echo '<li class="nav-item">';

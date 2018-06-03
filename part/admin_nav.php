@@ -24,9 +24,9 @@
                 <a href="back-favorite.php" class="list-group-item" id="favorite"><i class="fa fa-heart"></i>  我的最愛</a>
                 <a href="back-cart.php" class="list-group-item" id="cart"><i class="fa fa-cart-plus"></i>  購物車</a>
                 <a href="back-money.php" class="list-group-item" id="deposit"><i class="fa fa-bitcoin"></i>  儲值</a>
-                <a href="back-purchase.php" class="list-group-item" id="purchased"><i class="fa fa-gift"></i>  已購買漫畫</a>
+                <a href="back-purchased.php" class="list-group-item" id="purchased"><i class="fa fa-gift"></i>  已購買漫畫</a>
                 <a href="back-upload.php" class="list-group-item" id="uploadcomic"><i class="fa fa-upload"></i>  上傳漫畫</a>
-                <a href="back-reviseupload.php" class="list-group-item" id="reviseuploadcomic"><i class="fa fa-cog"></i>  修改上傳漫畫</a>
+                <a href="back-reviseupload.php" class="list-group-item" id="reviseuploadcomic"><i class="fa fa-cog"></i>  修改漫畫</a>
                 <a href="back-revisemember" class="list-group-item" id="revisemember"><i class="fa fa-cogs"></i>  修改會員資料</a>
                 <a href="back-dataanalysis" class="list-group-item" id="dataanalysis"><i class="fa fa-line-chart"></i>  數據分析</a>
                 <a href="part/logout.php" class="list-group-item"><i class="fa fa fa-sign-out"></i>  登出</a>

@@ -24,11 +24,11 @@
         }
     ?>
     <div class="wrap">
-        <nav class="navbar navbar-light " style="background-color: #90EE90;">
-            <span class="navbar-brand mb-0 h1">My Favorite</span>
-        </nav>
-        <div class="content">
-            <?php require_once "js/test.php"  ?>
+        <div class="card">
+            <h3 class="card-header"><i class="fa fa-heart"></i> My Favorite</h3>
+            <div class="card-body" style="text-align:center">
+                <?php require_once "js/test.php" ?>
+            </div>
         </div>
     </div>
 </body>
