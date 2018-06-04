@@ -54,7 +54,8 @@
     $("#choose").change(function(){
         var page="part/search.php";
         var value=$(this).val();
-        var formblock=['<div class="form-row">',
+        var formblock=['<h4>第二步: 修改漫畫</h4>',
+            '<div class="form-row">',
 '                        <div class="col-md-6 mb-3">',
 '                            <label for="animatename">名稱</label>',
 '                            <input type="text" class="form-control" id="animatename" placeholder="name" required>',

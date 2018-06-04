@@ -27,8 +27,8 @@
                 <a href="back-purchased.php" class="list-group-item" id="purchased"><i class="fa fa-gift"></i>  已購買漫畫</a>
                 <a href="back-upload.php" class="list-group-item" id="uploadcomic"><i class="fa fa-upload"></i>  上傳漫畫</a>
                 <a href="back-reviseupload.php" class="list-group-item" id="reviseuploadcomic"><i class="fa fa-cog"></i>  修改漫畫</a>
-                <a href="back-revisemember" class="list-group-item" id="revisemember"><i class="fa fa-cogs"></i>  修改會員資料</a>
-                <a href="back-dataanalysis" class="list-group-item" id="dataanalysis"><i class="fa fa-line-chart"></i>  數據分析</a>
+                <a href="back-revisemember.php" class="list-group-item" id="revisemember"><i class="fa fa-cogs"></i>  修改會員資料</a>
+                <a href="back-dataanalysis.php" class="list-group-item" id="dataanalysis"><i class="fa fa-line-chart"></i>  數據分析</a>
                 <a href="part/logout.php" class="list-group-item"><i class="fa fa fa-sign-out"></i>  登出</a>
             </div>
         </nav>
