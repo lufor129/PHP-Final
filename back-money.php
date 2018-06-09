@@ -14,7 +14,7 @@
 <body>
     <?php 
         session_start();
-        if($_SESSION["login"]==true){
+        if($_SESSION["login"]!=true){
             header("Refresh:0;url='index.php'");
         }elseif($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";

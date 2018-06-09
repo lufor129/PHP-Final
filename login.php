@@ -16,7 +16,7 @@
     <div class="content">
         <div class="jumbotron jumbotron-fluid">
             <div class="login">
-                <form action="login.php" method="get">
+                <form action="login.php" method="post">
                     <h1>LOGIN</h1>
                     <div class="form_field">
                         <h4>account</h4>
@@ -28,11 +28,10 @@
                         <input type="password" name="password" class="form-control" id="" required>
                     </div>
                     <p></p>
-                    <input type="checkbox" name="remember[]" value="on" id="">
-                    <span>記住我</span>
                     <span id="enroll">
                         <a href="register.php" class="btn btn-link">沒有帳號? 註冊</a>
                     </span>
+                    <p></p>
                     <input type="submit" value="登入" class="btn btn-block btn-primary" id="submitbotton">
                 </form>
             </div>
@@ -47,16 +46,14 @@
     session_start();
     require_once "part/dbconnect.php";
     
-    if(isset($_GET["account"])&&isset($_GET["password"])){
-        $account=$_GET["account"];
-        $password=$_GET["password"];
-        $remember=$_GET["remember"];
-        $sql="SELECT * from user where account='$account' AND password='$password'";
+    if(isset($_POST["account"])&&isset($_POST["password"])){
+        $account=$_POST["account"];
+        $password=$_POST["password"];
+        $sql="SELECT * from user where user_account='$account' AND user_password='$password'";
         $result=$link->query($sql);
         if($result->num_rows>0){
             //成功登入
-            if($remember[0]=on)
-                $_SESSION["login"]=true;
+            $_SESSION["login"]=true;
             $_SESSION["user"]=$account;
             header("Refresh:0;url='index.php'");
         }else{

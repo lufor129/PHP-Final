@@ -17,20 +17,22 @@
 <body>
     <?php 
         session_start();
-        if($_SESSION["login"]==true){
+        if($_SESSION["login"]!=true){
             header("Refresh:0;url='index.php'");
         }elseif($_SESSION["user"]=="root"){
-            require_once "part/admin_nav.php";
+            header("Refresh:0;url='back-revisemember.php'");
         }else{
             require_once "part/user_nav.php";
         }
 
         require_once "part/dbconnect.php";
         //用帳號搜查，嚴謹一點可以session 存編號，但我懶
-        $sql="SELECT user_account,user_password,user_email,user_photo from user where user_account=".$_SESSION['user'];
+        $account=$_SESSION["user"];
+        $sql="SELECT * from user where user_account='$account'";
         $result=$link->query($sql);
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
+                $id=$row["user_id"];
                 $account=$row["user_account"];
                 $password=$row["user_password"];
                 $email=$row["user_email"];
@@ -65,10 +67,11 @@
                         <span class="input-group-text">頭像</span>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" name="pic">
+                        <input type="file" class="custom-file-input"  name="photo">
                         <label class="custom-file-label" for="inputGroupFile01">請上傳頭像</label>
                     </div>
                 </div>
+                <input type="hidden" name="id" value="<?php if(isset($id)) echo $id; ?>">
                 <button type="submit" class="btn btn-success" style="float:right;margin-top:10px; margin-right:10px;font-size:20px;">修改</button>
                 </form>
             </div>

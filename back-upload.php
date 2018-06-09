@@ -14,7 +14,7 @@
 <body>
     <?php
         session_start();
-        if($_SESSION["user"]!="root"){
+        if($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
         }else{
             header("Refresh:0;url='index.php'");
@@ -41,40 +41,27 @@
                             </div>
                         </div>
                     </div>
-                            <div class="form_field mb-3">
-                                <label for="picture">圖片</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="picture"  required>
-                                    <label class="custom-file-label" for="picture">Choose Profile Photo</label>
-                                </div>
-                            </div>
                     <div class="form-row">
-                        <div class="form-group col-md-5">
-                            <label for="director">導演</label>
-                            <input type="email" class="form-control" id="director" placeholder="director" required>
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="company">製作公司</label>
-                            <input type="password" class="form-control" id="company" placeholder="company" required>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="episode">總話數</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="episode" placeholder="episode" aria-describedby="inputGroupPrepend2" required>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">話</span>
-                                </div>
+                        <div class="form_field mb-3 col-md-6">
+                            <label for="picture">圖片</label>
+                            <div class="custom-file ">
+                                <input type="file" class="custom-file-input" id="picture"  required>
+                                <label class="custom-file-label" for="picture">Choose Profile Photo</label>
                             </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="director">作者</label>
+                            <input type="email" class="form-control" id="director" placeholder="director" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-10">
                                 <label for="description">描述</label>
-                                <textarea class="form-control" id="description" rows="3" required></textarea>
+                                <textarea class="form-control" id="description" rows="5" required></textarea>
                         </div>
                         <div class="form-group col-md-2">
                                 <label for="feature">特色</label>
-                                <select multiple class="form-control "  size="3" id="feature" required>
+                                <select multiple="multiple" class="form-control "  size="5" id="feature" required>
                                   <option>熱血</option>
                                   <option>校園</option>
                                   <option>奇幻</option>

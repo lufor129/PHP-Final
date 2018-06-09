@@ -15,7 +15,7 @@
 <body>
     <?php 
         session_start();
-        if($_SESSION["login"]==true){
+        if($_SESSION["login"]!=true){
             header("Refresh:0;url='index.php'");
         }elseif($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
@@ -26,7 +26,7 @@
     <div class="wrap">
         <div class="card">
             <h3 class="card-header"><i class="fa fa-cart-plus"></i> My Cart</h3>
-            <div class="card-body" style="text-align:center">
+            <div class="card-body" style="padding:6%;padding-top:3%">
                 <?php require_once "js/test.php" ?>
             </div>
         </div>

@@ -78,11 +78,11 @@
                             echo '<li class="nav-item visitor"><a class="nav-link" href="login.php">登入</a></li>';
                             echo '<li class="nav-item visiter"><a class="nav-link" href="register.php">註冊</a></li>';
                         }elseif($_SESSION["user"]=="root"){
-                            echo '<li class="nav-item visiter"><a class="nav-link" href="register.php">後台管理</a></li>';
+                            echo '<li class="nav-item visiter"><a class="nav-link" href="back-revisemember.php">後台管理</a></li>';
                             echo '<li class="nav-item visitor"><a class="nav-link" href="part/logout.php">登出</a></li>';
                         }else{
                             echo '<li class="nav-item"><a class="nav-link" href="information.php">平台說明</a></li>';
-                            echo '<li class="nav-item visitor"><a class="nav-link" href="cart.php">購物車</a></li>';
+                            echo '<li class="nav-item visitor"><a class="nav-link" href="back-cart.php">購物車</a></li>';
                             echo '<li class="nav-item visitor"><a class="nav-link" href="part/logout.php">登出</a></li>';
                         }
                     

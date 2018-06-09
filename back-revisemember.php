@@ -14,7 +14,7 @@
 <body>
     <?php
         session_start();
-        if($_SESSION["user"]!="root"){
+        if($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
         }else{
             header("Refresh:0;url='index.php'");
@@ -39,14 +39,21 @@
                 </thead>
                 <tbody>
                 <!--- 用php輸出-->
-                    <tr>
-                        <th scope="row">root</th>
-                        <th>admin</th>
-                        <th>s59654655@gmail.com</th>
-                        <th>699</th>
-                        <th><a href="back-revisememberDone.php" class="btn btn-primary">修改</a></th>
-                        <th><a href="part/delete-member.php" class="btn btn-danger">刪除</a></th>
-                    </tr>
+                        <?php
+                            require_once "part/dbconnect.php";
+                            $sql="SELECT * from user";
+                            $result=$link->query($sql);
+                            while($row=$result->fetch_assoc()){
+                                echo '<tr>';
+                                echo '<th scope="row">'.$row["user_account"].'</th>';
+                                echo '<th>'.$row["user_password"]."</th>";
+                                echo '<th>'.$row["user_email"]."</th>";
+                                echo '<th>'.$row["user_money"]."</th>";
+                                echo '<th><a href="back-revisememberDone.php?user_account='.$row["user_account"].'" class="btn btn-primary">修改</a></th>';
+                                echo '<th><a href="part/delete-member.php?user_account='.$row["user_account"].'" class="btn btn-danger">刪除</a></th>';
+                                echo '</tr>';
+                            }
+                        ?>
                 </tbody>
             </div>
         </div>

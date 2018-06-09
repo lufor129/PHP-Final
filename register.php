@@ -32,7 +32,7 @@
                     <div class="form_field">
                         <h4>PHOTO</h4>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" required>
+                            <input type="file" class="custom-file-input" id="customFile" name="photo" required>
                             <label class="custom-file-label" for="customFile">Choose Profile Photo</label>
                         </div>
                     </div>
@@ -54,30 +54,33 @@
     session_start();
     require_once "part/dbconnect.php";
 
-    if(isset($_GET["account"])&&isset($_GET["password"])&&isset($_GET["confirm-password"])){
-        $account=$_GET["account"];
-        $password=$_GET["password"];
-        $confirm=$_GET["confirm-password"];
+    if(isset($_POST["account"])&&isset($_POST["password"])&&isset($_FILES["photo"]["error"])){
+        $account=$_POST["account"];
+        $password=$_POST["password"];
 
-        if($password!=$confirm){
-            echo "<center><font color='red'>";
-            echo "密碼與確認密碼需要相同!<br/>";
-            echo "</font>";
-        }
-
-        $sql="SELECT *from user where account = '$account'";
+        $sql="SELECT * from user where user_account = '$account'";
         $result=$link->query($sql);
-        if($result->row_nums>0){
+        if($result->num_rows>0){
             echo "<center><font color='red'>";
             echo "帳號已重複<br/>";
             echo "</font>";
         }else{
-            $sql2="INSERT INTO user (account,password) VALUES ('$account','$password')";
-            $link->query($sql2);
-            echo "註冊成功，2秒後轉跳首頁";
-            $_SESSION["login"]=true;
-            $_SESSION["user"]=$account;
-            header("Refresh:2;url='index.php'");
+            $upload="image/".$_FILES["photo"]["name"];
+            $filepath=pathinfo($upload);
+            $changename="image/user-$account.".$filepath["extension"];
+            copy($_FILES["photo"]["tmp_name"],$changename);
+            date_default_timezone_set("Asia/Taipei");
+            $time=date("m-d-G-i");
+            $sql2="INSERT INTO user (user_account,user_password,user_photo,user_money,user_time) VALUES ('$account','$password','$changename',0,'$time')";
+            if($link->query($sql2)==true){
+                $_SESSION["login"]=true;
+                $_SESSION["user"]=$account;
+                 header("Refresh:0;url='index.php'");
+            }else{
+                echo "<center><font color='red'>";
+                echo "插入錯誤<br/>";
+                echo "</font>";
+            }
         }
     }
     mysqli_close($link);

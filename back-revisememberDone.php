@@ -14,8 +14,18 @@
 <body>
     <?php
         session_start();
-        if($_SESSION["user"]!="root"){
+        if($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
+            require_once "part/dbconnect.php";
+            $account=$_GET["user_account"];
+            $sql="SELECT * from user where user_account='$account'";
+            $result=$link->query($sql);
+            while($row=$result->fetch_assoc()){
+                $password=$row["user_password"];
+                $email=$row["user_email"];
+                $money=$row["user_money"];
+                $id=$row["user_id"];
+            }
         }else{
             header("Refresh:0;url='index.php'");
         }
@@ -47,8 +57,9 @@
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">餘額</span>
                     </div>
-                    <input type="email" class="form-control" placeholder="請輸入餘額" name="email" value="<?php if(isset($money))echo $email; ?>">
+                    <input type="number" class="form-control" placeholder="請輸入餘額" name="money" value="<?php if(isset($money))echo $money; ?>">
                 </div>
+                <input type="hidden" name="id" value="<?php if(isset($id)) echo $id ?>">
                 <button type="submit" class="btn btn-success" style="float:right;margin-top:10px; margin-right:10px;font-size:20px;">修改</button>
                 </form>
             </div>

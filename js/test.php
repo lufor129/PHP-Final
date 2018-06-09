@@ -30,7 +30,7 @@
                     <h2></h2>
                     <?php
                         session_start();
-                        if($_SESSION["login"]!=true){
+                        if($_SESSION["login"]==true){
                             echo '<button id="favorite" class="btn btn-danger">
                             <i class="fa fa-heart-o"></i>
                             請先登入
