@@ -1,18 +1,25 @@
 <?php
     require_once "dbconnect.php";
 
-    if(isset($_GET["search"])){
-        $comicname=$_GET["search"];
-        $sql="SELECT * from commic where name='$commicname'";
+    if(isset($_GET["id"])){
+        $id=$_GET["id"];
+        $sql="SELECT * from comic_description where comicD_id='$id'";
         $result=$link->query($sql);
-        if($result->row_nums>0){
-            
-        }else{
-            echo "<center><font color='red'>";
-            echo "本系統未有此漫畫<br/>";
-            echo "</font>";
-        }
+        $array=$result->fetch_assoc();
+        echo json_encode($array);
     }
+
+    if(isset($_GET["id2"])){
+        $id=$_GET["id2"];
+        $sql="SELECT * from feature_detail where comicD_id='$id'";
+        $result=$link->query($sql);
+        $array=[];
+        while($row=$result->fetch_assoc()){
+            $array[$row["featureD_id"]]=$row;
+        }
+        echo json_encode($array);
+    }
+
     
 
 

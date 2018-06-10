@@ -10,12 +10,18 @@
     <link rel="stylesheet" href="css/back.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <style>
+        #reviseform{
+            margin-top:5%;
+        }
+    </style>
 </head>
 <body>
     <?php
         session_start();
         if($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
+            require_once "part/dbconnect.php";
         }else{
             header("Refresh:0;url='index.php'");
         }
@@ -29,12 +35,15 @@
                 <div class="form-group col-md-3">
                     <select class="form-control "  id="choose">
                         <option selected disabled>漫畫</option>
-                        <option>熱血</option>
-                        <option>校園</option>
-                        <option>奇幻</option>
-                        <option>搞笑</option>
-                        <option>日常</option>
-                        <option>愛情</option>
+                        <?php
+                            $sql="SELECT * from comic_description";
+                            $result=$link->query($sql);
+                            while($row=$result->fetch_assoc()){
+                                $comic_id=$row["comicD_id"];
+                                $comic_name=$row["comicD_name"];
+                                echo "<option value='$comic_id'>$comic_name</option>";
+                            }
+                        ?>
                     </select>
                 </div>
                 <form action="part/reviseupload.php" method="post" id="reviseform" enctype="multipart/form-data">
@@ -52,81 +61,82 @@
     });
 
     $("#choose").change(function(){
-        var page="part/search.php";
         var value=$(this).val();
-        var formblock=['<h4>第二步: 修改漫畫</h4>',
-            '<div class="form-row">',
-'                        <div class="col-md-6 mb-3">',
-'                            <label for="animatename">名稱</label>',
-'                            <input type="text" class="form-control" id="animatename" placeholder="name" required>',
-'                        </div>',
-'                        <div class="col-md-6 mb-3">',
-'                            <label for="price">價格</label>',
-'                            <div class="input-group">',
-'                                <div class="input-group-prepend">',
-'                                    <span class="input-group-text">$</span>',
-'                                </div>',
-'                                <input type="number" class="form-control" id="price" placeholder="money" required>',
-'                            </div>',
-'                        </div>',
-'                    </div>',
-'                            <div class="form_field mb-3">',
-'                                <label for="picture">圖片</label>',
-'                                <div class="custom-file">',
-'                                    <input type="file" class="custom-file-input" id="picture" required>',
-'                                    <label class="custom-file-label" id="piclabel" for="picture">Choose Profile Photo</label>',
-'                                </div>',
-'                            </div>',
-'                    <div class="form-row">',
-'                        <div class="form-group col-md-5">',
-'                            <label for="director">導演</label>',
-'                            <input type="email" class="form-control" id="director" placeholder="director" required>',
-'                        </div>',
-'                        <div class="form-group col-md-5">',
-'                            <label for="company">製作公司</label>',
-'                            <input type="password" class="form-control" id="company" placeholder="company" required>',
-'                        </div>',
-'                        <div class="form-group col-md-2">',
-'                            <label for="episode">總話數</label>',
-'                            <div class="input-group">',
-'                                <input type="text" class="form-control" id="episode" placeholder="episode" aria-describedby="inputGroupPrepend2" required>',
-'                                <div class="input-group-prepend">',
-'                                    <span class="input-group-text">話</span>',
-'                                </div>',
-'                            </div>',
-'                        </div>',
-'                    </div>',
-'                    <div class="form-row">',
-'                        <div class="form-group col-md-10">',
-'                                <label for="description">描述</label>',
-'                                <textarea class="form-control" id="description" rows="3" required></textarea>',
-'                        </div>',
-'                        <div class="form-group col-md-2">',
-'                                <label for="feature">特色</label>',
-'                                <select multiple class="form-control "  size="3" id="feature" required>',
-'                                  <option>熱血</option>',
-'                                  <option>校園</option>',
-'                                  <option>奇幻</option>',
-'                                  <option>搞笑</option>',
-'                                  <option>日常</option>',
-'                                  <option>愛情</option>',
-'                                </select>',
-'                        </div>',
-'                    </div>',
-'                    <button class="btn btn-primary" type="submit">上傳</button>'].join("");
-        $("#reviseform").innerHTML(formblock);
+        var formblock='<h4>第二步: 修改漫畫 </h4>\
+                    <div class="form-row">\
+                        <div class="col-md-6 mb-3">\
+                            <label for="animatename">名稱</label>\
+                            <input type="text" class="form-control" name="name" id="animatename" placeholder="name" required>\
+                        </div>\
+                        <div class="col-md-6 mb-3">\
+                            <label for="price">價格</label>\
+                            <div class="input-group">\
+                                <div class="input-group-prepend">\
+                                    <span class="input-group-text">$</span>\
+                                </div>\
+                                <input type="number" class="form-control" name="price" id="price" placeholder="money" required>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="form-row">\
+                        <div class="form_field mb-3 col-md-6">\
+                            <label for="picture">圖片</label>\
+                            <div class="custom-file ">\
+                                <input type="file" class="custom-file-input" id="picture" name="picture" required>\
+                                <label class="custom-file-label" for="picture">Choose Profile Photo</label>\
+                            </div>\
+                        </div>\
+                        <div class="form-group col-md-6">\
+                            <label for="director">作者</label>\
+                            <input type="text" class="form-control" id="director" placeholder="director" name="author" required>\
+                        </div>\
+                    </div>\
+                    <div class="form-row">\
+                        <div class="form-group col-md-10">\
+                                <label for="description">描述</label>\
+                                <textarea class="form-control" id="description" rows="5" name="description" required></textarea>\
+                        </div>\
+                        <div class="form-group col-md-2">\
+                                <label for="feature">特色</label>\
+                                <select multiple="multiple" class="form-control "  size="5" id="feature" name="feature[]" required>\
+                                  <?php
+                                    $sql="SELECT * from feature";
+                                    $result=$link->query($sql);
+                                    while($row = $result->fetch_assoc()){
+                                        $feature_id=$row["feature_id"];
+                                        $feature_name=$row["feature_name"];
+                                        echo "<option value=\'$feature_id\'>$feature_name</option>";
+                                    }
+                                  ?>
+                                </select>\
+                        </div>\
+                    </div>\
+                    <button class="btn btn-success" type="submit">更新</button>\
+'
+        $("#reviseform").html(formblock);
+        console.log(value);
         $.ajax({
-            tyoe:"get",
-            url:page,
+            type:"get",
+            url:"part/searchcomic.php",
             dataType:"json",
+            data:{id:value},
             success:function(data){
-                $("#animatename").val(data[0].name);
-                $("#price").val(data[0].price);
-                $("#piclabel").val(data[0].picture);
-                $("#director").val(data[0].director);
-                $("#company").val(data[0].company);
-                $("episode").val(data[0].episode);
-                
+                $("#animatename").val(data.comicD_name);
+                $("#price").val(data.comicD_price);
+                $("#director").val(data.comicD_author);
+                $("#description").text(data.comicD_descript);
+            }
+        });
+        $.ajax({
+            type:"get",
+            url:"part/searchcomic.php",
+            dataType:"json",
+            data:{id2:value},
+            success:function(data){
+                console.log(data);
+                for(var key in data){
+                    $("#feature").val(data[key].feature_id).attr("selected");
+                }
             }
         });
     });

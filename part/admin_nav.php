@@ -33,5 +33,4 @@
         </nav>
 </body>
 </html>
-<script src="../Boostrap/js/bootstrap.min.js"></script>
 <!-- 使用user/admin_nav 請加上 flaot:right width:80% -->
