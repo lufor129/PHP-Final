@@ -8,7 +8,7 @@
 		</style>
 	</head>
 	<body style = "background-color:#232323;">
-		<?php include "comichead.php";?>
+		<?php include "old/comichead.php";?>
 		
 			
 		

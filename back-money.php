@@ -14,12 +14,19 @@
 <body>
     <?php 
         session_start();
+        require_once "part/dbconnect.php";
         if($_SESSION["login"]!=true){
             header("Refresh:0;url='index.php'");
         }elseif($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
         }else{
             require_once "part/user_nav.php";
+        }
+        $account=$_SESSION["user"];
+        $sql="SELECT * from user where user_account='$account'";
+        $result=$link->query($sql);
+        if($row=$result->fetch_assoc()){
+            $money=$row["user_money"];
         }
     ?>
     <div class="wrap">
@@ -28,17 +35,17 @@
             <div class="card-body">
                 <h5 class="card-title">DEPOSIT</h5>
                 <p class="card-text">好好想想，你不充值，怎麼能變的更強呢?</p><br>
-                <form action="user-monry.php" method="get">
+                <form action="part/updatemoney.php" method="post">
                     <div class="input-group input-group-lg">
                         <span class="input-group-text">NTD</span>
-                        <input type="text" class="form-control" placeholder="能充一個億是最好的" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input type="number" name="money" class="form-control" placeholder="能充一個億是最好的" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <button class="btn btn-success" type="submit">充值</button>
                     </div>
                 </form>
                 <br>
                 <hr>
                 <br>
-                <h3>目前儲值金: 2333</h3>
+                <h3>目前儲值金: <?php echo $money ?> </h3>
             </div>
         </div>
     </div>

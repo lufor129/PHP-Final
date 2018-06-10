@@ -16,6 +16,7 @@
         session_start();
         if($_SESSION["user"]=="root"){
             require_once "part/admin_nav.php";
+            require_once "part/dbconnect.php";
         }else{
             header("Refresh:0;url='index.php'");
         }
@@ -29,7 +30,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="animatename">名稱</label>
-                            <input type="text" class="form-control" id="animatename" placeholder="name" required>
+                            <input type="text" class="form-control" name="name" id="animatename" placeholder="name" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="price">價格</label>
@@ -37,7 +38,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 </div>
-                                <input type="number" class="form-control" id="price" placeholder="money" required>
+                                <input type="number" class="form-control" name="price" id="price" placeholder="money" required>
                             </div>
                         </div>
                     </div>
@@ -45,23 +46,23 @@
                         <div class="form_field mb-3 col-md-6">
                             <label for="picture">圖片</label>
                             <div class="custom-file ">
-                                <input type="file" class="custom-file-input" id="picture"  required>
+                                <input type="file" class="custom-file-input" id="picture" name="picture" required>
                                 <label class="custom-file-label" for="picture">Choose Profile Photo</label>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="director">作者</label>
-                            <input type="email" class="form-control" id="director" placeholder="director" required>
+                            <input type="email" class="form-control" id="director" placeholder="director" name="email" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-10">
                                 <label for="description">描述</label>
-                                <textarea class="form-control" id="description" rows="5" required></textarea>
+                                <textarea class="form-control" id="description" rows="5" name="description" required></textarea>
                         </div>
                         <div class="form-group col-md-2">
                                 <label for="feature">特色</label>
-                                <select multiple="multiple" class="form-control "  size="5" id="feature" required>
+                                <select multiple="multiple" class="form-control "  size="5" id="feature" name="feature[]" required>
                                   <option>熱血</option>
                                   <option>校園</option>
                                   <option>奇幻</option>
@@ -77,8 +78,10 @@
         </div>
     </div>
     </body>
-    
-    </html>
+    <?php
+        
+    ?>
+</html>
 <script>
     $("#uploadcomic").addClass("active");
     $('.custom-file-input').on('change', function() { 
