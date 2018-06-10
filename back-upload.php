@@ -20,13 +20,14 @@
         }else{
             header("Refresh:0;url='index.php'");
         }
+
     ?>
     <div class="wrap">
         <div class="card" style="margin-top:5%;">
             <h3 class="card-header">
                 <i class="fa fa-upload"></i> 上傳漫畫</h3>
             <div class="card-body">
-                <form action="part/upload.php" method="post" enctype="multipart/form-data">
+                <form action="back-upload.php" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="animatename">名稱</label>
@@ -52,7 +53,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="director">作者</label>
-                            <input type="email" class="form-control" id="director" placeholder="director" name="email" required>
+                            <input type="text" class="form-control" id="director" placeholder="director" name="author" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -63,12 +64,15 @@
                         <div class="form-group col-md-2">
                                 <label for="feature">特色</label>
                                 <select multiple="multiple" class="form-control "  size="5" id="feature" name="feature[]" required>
-                                  <option>熱血</option>
-                                  <option>校園</option>
-                                  <option>奇幻</option>
-                                  <option>搞笑</option>
-                                  <option>日常</option>
-                                  <option>愛情</option>
+                                  <?php
+                                    $sql="SELECT * from feature";
+                                    $result=$link->query($sql);
+                                    while($row = $result->fetch_assoc()){
+                                        $feature_id=$row["feature_id"];
+                                        $feature_name=$row["feature_name"];
+                                        echo "<option value='$feature_id'>$feature_name</option>";
+                                    }
+                                  ?>
                                 </select>
                         </div>
                     </div>
@@ -76,11 +80,47 @@
                 </form>
             </div>
         </div>
+    <?php
+    if(isset($_POST["name"])&&isset($_POST["price"])&&(!empty($_FILES["picture"]))){
+        $name=$_POST["name"];
+        $price=$_POST["price"];
+        $author=$_POST["author"];
+        $description=$_POST["description"];
+        $feature=$_POST["feature"];
+        $sql="SELECT * from comic_description where comicD_name='$name'";
+        $result=$link->query($sql);
+        if($result->num_rows>0){
+            echo "<center><font color='red'>";
+            echo "漫畫已存在<br/>";
+            echo "</font></center>";
+        }else{
+            $upload="image/".$_FILES["picture"]["name"];
+            $filepath=pathinfo($upload);
+            $changename="image/comic-$name.".$filepath["extension"];
+            copy($_FILES["picture"]["tmp_name"],$changename);
+            date_default_timezone_set("Asia/Taipei");
+            $time=date("m-d-G-i");
+            $sql="INSERT INTO `comic_description` (`comicD_name`, `comicD_price`, `comicD_author`, `comicD_photo`, `comicD_descript`, `comicD_lovenumber`, `comicD_cartnumber`, `comicD_time`) VALUES ('$name', $price, '$author', '$changename', '$description', '0', '0', '$time')";
+            if($link->query($sql)==true){
+                $sql="SELECT * from comic_description where comicD_name='$name'";
+                $result=$link->query($sql);
+                while($row=$result->fetch_assoc()){
+                    $id=$row["comicD_id"];
+                }
+                foreach ($feature as $value){
+                    $sql="INSERT INTO `feature_detail` (`comicD_id`,`feature_id`) VALUES ($id,$value)";
+                    $link->query($sql);
+                }
+            }else{
+                echo "<center><font color='red'>";
+                echo "插入失敗<br/>";
+                echo "</font></center>";
+            }
+        }
+    }
+    ?>
     </div>
     </body>
-    <?php
-        
-    ?>
 </html>
 <script>
     $("#uploadcomic").addClass("active");
