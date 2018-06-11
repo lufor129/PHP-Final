@@ -65,7 +65,7 @@
                         <a class="dropdown-item" href="#">奇幻</a>
                         <a class="dropdown-item" href="#">搞笑</a>
                         <a class="dropdown-item" href="#">日常</a>
-                        <a class="dropdown-item" href="#">搞笑</a>
+                        <a class="dropdown-item" href="#">愛情</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item disabled" href="#">排名</a>
                         <a class="dropdown-item" href="#">點擊數</a>

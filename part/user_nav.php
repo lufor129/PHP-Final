@@ -11,10 +11,22 @@
     <link rel="stylesheet" href="css/left-nav.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
+<?php
+    session_start();
+    require_once "dbconnect.php";
+    $name=$_SESSION["user"];
+    $sql="SELECT * from user where user_account='$name'";
+    $result=$link->query($sql);
+    while($row=$result->fetch_assoc()){
+        $photo=$row["user_photo"];
+    }
+
+?>
 <body>
     <nav class="user-nav">
         <div class="peopleimg img-circle">
-            <p style="color:white">歡迎 <? $_SESSION["user"]?></p>
+            <img src="<?php echo $photo ?>" alt="">
+            <p style="color:white">歡迎 <?php  echo $name;?></p>
         </div>
     <div class="list-group">
         <a href="index.php" class="list-group-item"><i class="fa fa-car"></i>  首頁</a>

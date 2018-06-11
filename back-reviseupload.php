@@ -29,19 +29,19 @@
     <div class="wrap">
         <div class="card" >
             <h3 class="card-header">
-                <i class="fa fa-cog"></i> 修改漫畫</h3>
+                <i class="fa fa-cog"></i> 修改動畫</h3>
             <div class="card-body">
-                <h4>第一步: 先選擇漫畫</h4>
+                <h4>第一步: 先選擇動畫</h4>
                 <div class="form-group col-md-3">
                     <select class="form-control "  id="choose">
-                        <option selected disabled>漫畫</option>
+                        <option selected disabled>動畫</option>
                         <?php
-                            $sql="SELECT * from comic_description";
+                            $sql="SELECT * from animate";
                             $result=$link->query($sql);
                             while($row=$result->fetch_assoc()){
-                                $comic_id=$row["comicD_id"];
-                                $comic_name=$row["comicD_name"];
-                                echo "<option value='$comic_id'>$comic_name</option>";
+                                $animate_id=$row["animate_id"];
+                                $animate_name=$row["animate_name"];
+                                echo "<option value='$animate_id'>$animate_name</option>";
                             }
                         ?>
                     </select>
@@ -62,41 +62,54 @@
 
     $("#choose").change(function(){
         var value=$(this).val();
-        var formblock='<h4>第二步: 修改漫畫 </h4>\
-                    <div class="form-row">\
-                        <div class="col-md-6 mb-3">\
-                            <label for="animatename">名稱</label>\
-                            <input type="text" class="form-control" name="name" id="animatename" placeholder="name" required>\
-                        </div>\
-                        <div class="col-md-6 mb-3">\
-                            <label for="price">價格</label>\
-                            <div class="input-group">\
-                                <div class="input-group-prepend">\
-                                    <span class="input-group-text">$</span>\
+        var formblock='<h4>第二步: 修改動畫 </h4>\
+                            <div class="form-row">\
+                            <div class="col-md-6 mb-3">\
+                                <label for="animatename">名稱</label>\
+                                <input type="text" class="form-control" id="animatename" name="name" placeholder="name" required>\
+                            </div>\
+                            <div class="col-md-6 mb-3">\
+                                <label for="price">價格</label>\
+                                <div class="input-group">\
+                                    <div class="input-group-prepend">\
+                                        <span class="input-group-text">$</span>\
+                                    </div>\
+                                    <input type="number" class="form-control" id="price" name="price" placeholder="money" required>\
                                 </div>\
-                                <input type="number" class="form-control" name="price" id="price" placeholder="money" required>\
                             </div>\
                         </div>\
-                    </div>\
-                    <div class="form-row">\
-                        <div class="form_field mb-3 col-md-6">\
-                            <label for="picture">圖片</label>\
-                            <div class="custom-file ">\
-                                <input type="file" class="custom-file-input" id="picture" name="picture" required>\
-                                <label class="custom-file-label" for="picture">Choose Profile Photo</label>\
+                                <div class="form_field mb-3">\
+                                    <label for="picture">圖片</label>\
+                                    <div class="custom-file">\
+                                        <input type="file" class="custom-file-input" id="picture"  name="picture" required>\
+                                        <label class="custom-file-label" for="picture">Choose Profile Photo</label>\
+                                    </div>\
+                                </div>\
+                        <div class="form-row">\
+                            <div class="form-group col-md-5">\
+                                <label for="director">導演</label>\
+                                <input type="text" class="form-control" id="director" name="director" placeholder="director" required>\
+                            </div>\
+                            <div class="form-group col-md-5">\
+                                <label for="company">製作公司</label>\
+                                <input type="text" class="form-control" id="company" name="company" placeholder="company" required>\
+                            </div>\
+                            <div class="form-group col-md-2">\
+                                <label for="episode">總話數</label>\
+                                <div class="input-group">\
+                                    <input type="number" class="form-control" id="episode" name="episode" placeholder="episode"  required>\
+                                    <div class="input-group-prepend">\
+                                        <span class="input-group-text">話</span>\
+                                    </div>\
+                                </div>\
                             </div>\
                         </div>\
-                        <div class="form-group col-md-6">\
-                            <label for="director">作者</label>\
-                            <input type="text" class="form-control" id="director" placeholder="director" name="author" required>\
-                        </div>\
-                    </div>\
-                    <div class="form-row">\
-                        <div class="form-group col-md-10">\
-                                <label for="description">描述</label>\
-                                <textarea class="form-control" id="description" rows="5" name="description" required></textarea>\
-                        </div>\
-                        <div class="form-group col-md-2">\
+                        <div class="form-row">\
+                            <div class="form-group col-md-10">\
+                                    <label for="description">描述</label>\
+                                    <textarea class="form-control" id="description" rows="5" name="description" required></textarea>\
+                            </div>\
+                            <div class="form-group col-md-2">\
                                 <label for="feature">特色</label>\
                                 <select multiple="multiple" class="form-control "  size="5" id="feature" name="feature[]" required>\
                                   <?php
@@ -109,27 +122,30 @@
                                     }
                                   ?>
                                 </select>\
+                            </div>\
+                            <input type="hidden" name="id" id="id">\
                         </div>\
-                    </div>\
-                    <button class="btn btn-success" type="submit">更新</button>\
-'
+                        <button class="btn btn-primary" type="submit">上傳</button>\
+                        ';
         $("#reviseform").html(formblock);
-        console.log(value);
         $.ajax({
             type:"get",
-            url:"part/searchcomic.php",
+            url:"part/searchanimate.php",
             dataType:"json",
             data:{id:value},
             success:function(data){
-                $("#animatename").val(data.comicD_name);
-                $("#price").val(data.comicD_price);
-                $("#director").val(data.comicD_author);
-                $("#description").text(data.comicD_descript);
+                $("#id").val(data.animate_id);
+                $("#animatename").val(data.animate_name);
+                $("#price").val(data.animate_price);
+                $("#director").val(data.animate_director);
+                $("#company").val(data.animate_company);
+                $("#description").text(data.animate_description);
+                $("#episode").val(data.animate_episode);
             }
         });
         $.ajax({
             type:"get",
-            url:"part/searchcomic.php",
+            url:"part/searchanimate.php",
             dataType:"json",
             data:{id2:value},
             success:function(data){

@@ -23,45 +23,58 @@
 
     ?>
     <div class="wrap">
-        <div class="card" style="margin-top:5%;">
+        <div class="card" style="margin-top:3%;">
             <h3 class="card-header">
-                <i class="fa fa-upload"></i> 上傳漫畫</h3>
+                <i class="fa fa-upload"></i> 上傳動畫</h3>
             <div class="card-body">
                 <form action="back-upload.php" method="post" enctype="multipart/form-data">
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="animatename">名稱</label>
-                            <input type="text" class="form-control" name="name" id="animatename" placeholder="name" required>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="price">價格</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">$</span>
+                            <div class="col-md-6 mb-3">
+                                <label for="animatename">名稱</label>
+                                <input type="text" class="form-control" id="animatename" name="name" placeholder="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="price">價格</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="price" name="price" placeholder="money" required>
                                 </div>
-                                <input type="number" class="form-control" name="price" id="price" placeholder="money" required>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form_field mb-3 col-md-6">
-                            <label for="picture">圖片</label>
-                            <div class="custom-file ">
-                                <input type="file" class="custom-file-input" id="picture" name="picture" required>
-                                <label class="custom-file-label" for="picture">Choose Profile Photo</label>
+                                <div class="form_field mb-3">
+                                    <label for="picture">圖片</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="picture"  name="picture" required>
+                                        <label class="custom-file-label" for="picture">Choose Profile Photo</label>
+                                    </div>
+                                </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="director">導演</label>
+                                <input type="text" class="form-control" id="director" name="director" placeholder="director" required>
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="company">製作公司</label>
+                                <input type="text" class="form-control" id="company" name="company" placeholder="company" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="episode">總話數</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="episode" name="episode" placeholder="episode"  required>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">話</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="director">作者</label>
-                            <input type="text" class="form-control" id="director" placeholder="director" name="author" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-10">
-                                <label for="description">描述</label>
-                                <textarea class="form-control" id="description" rows="5" name="description" required></textarea>
-                        </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                    <label for="description">描述</label>
+                                    <textarea class="form-control" id="description" rows="5" name="description" required></textarea>
+                            </div>
+                            <div class="form-group col-md-2">
                                 <label for="feature">特色</label>
                                 <select multiple="multiple" class="form-control "  size="5" id="feature" name="feature[]" required>
                                   <?php
@@ -74,9 +87,9 @@
                                     }
                                   ?>
                                 </select>
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn btn-primary" type="submit">上傳</button>
+                        <button class="btn btn-primary" type="submit">上傳</button>
                 </form>
             </div>
         </div>
@@ -84,31 +97,33 @@
     if(isset($_POST["name"])&&isset($_POST["price"])&&(!empty($_FILES["picture"]))){
         $name=$_POST["name"];
         $price=$_POST["price"];
-        $author=$_POST["author"];
+        $director=$_POST["director"];
+        $company=$_POST["company"];
+        $episode=$_POST["episode"];
         $description=$_POST["description"];
         $feature=$_POST["feature"];
-        $sql="SELECT * from comic_description where comicD_name='$name'";
+        $sql="SELECT * from animate where animate_name='$name'";
         $result=$link->query($sql);
         if($result->num_rows>0){
             echo "<center><font color='red'>";
-            echo "漫畫已存在<br/>";
+            echo "動畫已存在<br/>";
             echo "</font></center>";
         }else{
             $upload="image/".$_FILES["picture"]["name"];
             $filepath=pathinfo($upload);
-            $changename="image/comic-$name.".$filepath["extension"];
+            $changename="image/animate-$name.".$filepath["extension"];
             copy($_FILES["picture"]["tmp_name"],$changename);
             date_default_timezone_set("Asia/Taipei");
             $time=date("m-d-G-i");
-            $sql="INSERT INTO `comic_description` (`comicD_name`, `comicD_price`, `comicD_author`, `comicD_photo`, `comicD_descript`, `comicD_lovenumber`, `comicD_cartnumber`, `comicD_time`) VALUES ('$name', $price, '$author', '$changename', '$description', '0', '0', '$time')";
+            $sql="INSERT INTO `animate` (`animate_name`, `animate_price`, `animate_director`,`animate_company`, `animate_photo`, `animate_description`, `animate_episode`,`animate_click`,`animate_time`) VALUES ('$name', $price, '$director', '$company','$changename', '$description',$episode, 0, '$time')";
             if($link->query($sql)==true){
-                $sql="SELECT * from comic_description where comicD_name='$name'";
+                $sql="SELECT * from animate where animate_name='$name'";
                 $result=$link->query($sql);
                 while($row=$result->fetch_assoc()){
-                    $id=$row["comicD_id"];
+                    $id=$row["animate_id"];
                 }
                 foreach ($feature as $value){
-                    $sql="INSERT INTO `feature_detail` (`comicD_id`,`feature_id`) VALUES ($id,$value)";
+                    $sql="INSERT INTO `feature_detail` (`animate_id`,`feature_id`) VALUES ($id,$value)";
                     $link->query($sql);
                 }
             }else{
@@ -120,7 +135,7 @@
     }
     ?>
     </div>
-    </body>
+</body>
 </html>
 <script>
     $("#uploadcomic").addClass("active");

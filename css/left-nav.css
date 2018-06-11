@@ -25,10 +25,12 @@ div.peopleimg{
 div.peopleimg img{
     width:70px;
     height:70px;
+    border-radius: 50%;
     stroke:white;
+    float:right;
 }
 div.peopleimg p{
     color:white;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 140%;
 }

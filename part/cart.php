@@ -6,7 +6,7 @@
     if($_SESSION["login"]!=true){
         echo "<h1>請先登入</h1>";
     }else{
-        require_once "dbconnection.php";
+        require_once "dbconnect.php";
         $comic_name=$_GET["comic_name"];
         $user=$_SESSION["user"];
 
