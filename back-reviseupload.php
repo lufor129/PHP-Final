@@ -46,7 +46,7 @@
                         ?>
                     </select>
                 </div>
-                <form action="part/reviseupload.php" method="post" id="reviseform" enctype="multipart/form-data">
+                <form action="part/revise-upload.php" method="post" id="reviseform" enctype="multipart/form-data">
                 </form>
             </div>
         </div>
@@ -81,7 +81,7 @@
                                 <div class="form_field mb-3">\
                                     <label for="picture">圖片</label>\
                                     <div class="custom-file">\
-                                        <input type="file" class="custom-file-input" id="picture"  name="picture" required>\
+                                        <input type="file" class="custom-file-input" id="picture"  name="picture" >\
                                         <label class="custom-file-label" for="picture">Choose Profile Photo</label>\
                                     </div>\
                                 </div>\

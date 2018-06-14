@@ -46,7 +46,7 @@
                             echo '</li>';
                         }elseif($_SESSION["user"]=="root"){
                             echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="back-revise.php">歡迎! 管理者</a>';
+                            echo '<a class="nav-link" href="back-revisemember.php">歡迎! 管理者</a>';
                             echo '</li>';
                         }else{
                             echo '<li class="nav-item">';
@@ -55,22 +55,22 @@
                         }
                     ?>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         看漫畫
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item disabled" href="#">分類</a>
-                        <a class="dropdown-item" href="#">熱血</a>
-                        <a class="dropdown-item" href="#">校園</a>
-                        <a class="dropdown-item" href="#">奇幻</a>
-                        <a class="dropdown-item" href="#">搞笑</a>
-                        <a class="dropdown-item" href="#">日常</a>
-                        <a class="dropdown-item" href="#">愛情</a>
+                        <a class="dropdown-item" href="javascript:void(0)" id="heartblood">熱血</a>
+                        <a class="dropdown-item" href="javascript:void(0)">校園</a>
+                        <a class="dropdown-item" href="javascript:void(0)">奇幻</a>
+                        <a class="dropdown-item" href="javascript:void(0)">搞笑</a>
+                        <a class="dropdown-item" href="javascript:void(0)">日常</a>
+                        <a class="dropdown-item" href="javascript:void(0)">愛情</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item disabled" href="#">排名</a>
-                        <a class="dropdown-item" href="#">點擊數</a>
-                        <a class="dropdown-item" href="#">收藏數</a>
-                        <a class="dropdown-item" href="#">最多人買</a>
+                        <a class="dropdown-item" href="javascript:void(0)">點擊數</a>
+                        <a class="dropdown-item" href="javascript:void(0)">收藏數</a>
+                        <a class="dropdown-item" href="javascript:void(0)">最多人買</a>
                       </div>
                     </li>
                     <?php

@@ -1,17 +1,5 @@
-<?php
-    session_start();
-    $user=$_SESSION["user"];
+while($row = mysql_fetch_row($result)){
+$table_data[]= array("id=>"$row['id'],name=>$row['name']);
+}
+echo json_encode($table_data);
 
-    require_once "part/dbconnection.php";
-
-    if(isset($_GET["comic"])){
-        $comic=$_GET["comic"];
-        $sql="DELETE from cart where comic_name='$comic' AND user='$user'";
-        $link->query($sql);
-        $link->close();
-        header("url='../cart.php'");
-    }
-
-
-
-?>
