@@ -113,13 +113,10 @@
                 </div>
                 <div class="modal-body">
                     <h2 id="name"></h2>
+                    <h3 id="animate_id" hidden></h3>
                     <button id="favorite" class="btn btn-danger">
-                        <i class="fa fa-heart-o"></i>
-                        請先登入
                     </button>
                     <button id="joincart" class="btn btn-success">
-                        <i class="fa fa-shopping-cart"></i>
-                        請先登入
                     </button>
                 </div>
                 <div class="footer">
@@ -192,6 +189,7 @@
     });
     $(function () {
         $("#myModal").on("show.bs.modal",function (event) {
+            console.log($(this));
             $(this).find("div#comichead img").attr("src",$(event.relatedTarget).find("#comicIMG").attr("src"));
             //ㄎㄅ這一行我寫了快2小時
             $(".modal-body h2#name").html($(this).find(".name").html());
@@ -209,6 +207,7 @@
             }
             $("div#profile").html(html);
             var id=$(event.relatedTarget).parents(".comicblock").find("p#id").text();
+            $(this).find("h3#animate_id").text(id);
             $.ajax({
                 url:"part/click.php",
                 type:"get",
@@ -217,6 +216,34 @@
                     $(event.relatedTarget).parents(".comicblock").find("span.heat").html("<img src=\"http://pic.qiantucdn.com/58pic/13/84/39/28Q58PICwI4_1024.png!qt324\" alt=\"\">"+data);
                 }
             });
+            var confirm;
+            $.ajax({
+                url:"part/confirm.php",
+                type:"get",
+                data:{id:id},
+                async: false,
+                success:function(data){
+                    confirm=JSON.parse(data);
+                }
+            });
+            $(this).find("button#favorite").html("<i class='fa fa-heart-o'></i>"+confirm[0]);
+            $(this).find("button#joincart").html("<i class='fa fa-shopping-cart'></i>"+confirm[1]);
         });
+        $("button#favorite").click(function(){
+            var animate_id=$(this).siblings("h3#animate_id").text();
+            var love;
+            $.ajax({
+                type:"get",
+                url:"part/love.php",
+                async: false,
+                data:{id:animate_id},
+                success:function(data){
+                    love=data;                        
+                }
+            });
+            $(this).html("<i class='fa fa-heart-o'></i>"+love);
+        });
+        
     });
+    
 </script>
