@@ -1,0 +1,89 @@
+*
+{
+	font-family: 微軟正黑體;
+}
+
+#maintitle
+{
+	font-size: 40px;
+	font-weight: bold;
+	color: black;	
+}
+
+.bigtitle
+{
+	font-size: 26px;
+	font-weight: bold;
+	color: white;
+	padding: 5px;
+}
+
+div.maintitlechunk
+{
+	height: 70px;
+	width: 70vw;
+	border-radius: 8px;
+	opacity: 0.95;
+	background-color: white;	
+	padding-top: 10px;
+}
+
+div.Ltitlechunk
+{
+	width: 15vw;
+	height: 15vw;
+	border-radius: 8px;
+	opacity: 0.8;
+	background-color: #064a7f;
+	margin-top: 4vh;
+	margin-left: 15vw;
+	float: left;	
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.Rinfochunk
+{
+	width: 46vw;
+	height: 11vw;
+	border-radius: 8px;
+	opacity: 0.8;
+	background-color: white;
+	margin-top: 4vh;
+	margin-right: 15vw;
+	padding: 4vh 2vw 4vh 2vw;
+	float: right;
+}
+
+div.Rtitlechunk
+{
+	width: 15vw;
+	height: 15vw;
+	border-radius: 8px;
+	opacity: 0.8;
+	background-color: #064a7f;
+	margin-top: 4vh;
+	margin-right: 15vw;
+	float: right;	
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.Linfochunk
+{
+	width: 46vw;
+	height: 11vw;
+	border-radius: 8px;
+	opacity: 0.8;
+	background-color: white;
+	margin-top: 4vh;
+	margin-left: 15vw;
+	padding: 4vh 2vw 4vh 2vw;
+	float: left;
+}
+
+.infotext
+{
+	color: black;
+	font-size: 26px;
+}
