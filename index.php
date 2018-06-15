@@ -101,8 +101,57 @@
     </div>
     <hr>
     <div class="content">
-        <div class="informationbox">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    平台說明
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        這份專題花了主code一個月時間，其中還大改了一次需求，但我想完成度應該是蠻高的(除了不能來看漫畫)，希望教授們會喜歡。<br>
+                        專題也已經放上Github，未來供學弟妹們參(ㄔㄠ)考(ㄒㄧ)。 <br>
+                        <br>
+                        <br>
+                        by 黃智輝 A1057113
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    使用技術
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    前端: HTML、CSS、JavaScript、JQuery、Boostrap4、AJAX <br>
+                    後端: PHP、SQL <br>
 
+                    智輝:<br>
+                    其中很多新技術是第一次接觸，這分專題其實就是不斷的在挖坑跌坑，但專題完成的那一霎會覺得自己真的成長了不少，收穫滿滿。
+                </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    ER 細節與說明
+                    </button>
+                </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <img src="image/DB-image.png" alt="" style="width:100%;">
+                </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -328,5 +377,6 @@
             $(this).html("<i class='fa fa-shopping-cart'></i>"+cart);
         });
     });
+    $('.collapse').collapse()
     
 </script>

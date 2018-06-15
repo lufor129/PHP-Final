@@ -42,7 +42,7 @@
                         session_start();
                         if($_SESSION["login"]!=true){
                             echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="#">歡迎! 訪客</a>';
+                            echo '<a class="nav-link" href="javascript:void(0)">歡迎! 訪客</a>';
                             echo '</li>';
                         }elseif($_SESSION["user"]=="root"){
                             echo '<li class="nav-item">';
@@ -76,14 +76,14 @@
                     </li>
                     <?php
                         if($_SESSION["login"]!=true){
-                            echo '<li class="nav-item"><a class="nav-link" href="information.php">平台說明</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="index.php">平台說明</a></li>';
                             echo '<li class="nav-item visitor"><a class="nav-link" href="login.php">登入</a></li>';
                             echo '<li class="nav-item visiter"><a class="nav-link" href="register.php">註冊</a></li>';
                         }elseif($_SESSION["user"]=="root"){
                             echo '<li class="nav-item visiter"><a class="nav-link" href="back-revisemember.php">後台管理</a></li>';
                             echo '<li class="nav-item visitor"><a class="nav-link" href="part/logout.php">登出</a></li>';
                         }else{
-                            echo '<li class="nav-item"><a class="nav-link" href="information.php">平台說明</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="index.php">平台說明</a></li>';
                             echo '<li class="nav-item visitor"><a class="nav-link" href="back-cart.php">購物車</a></li>';
                             echo '<li class="nav-item visitor"><a class="nav-link" href="part/logout.php">登出</a></li>';
                         }
