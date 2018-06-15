@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="css/comicblock.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <style>
+        #purchase{
+            width:100%;
+            margin-top:5%;
+        }
+    </style>
 </head>
 <body>
     <?php 
@@ -107,10 +113,7 @@
 "        <div class=\"message\">",
 "            <h2 class=\"name\">"+jso_data[i]["animate_name"]+"</h2>",
 "            <h5 class=\"price\">價格: "+jso_data[i]["animate_price"]+"</h5>",
-"            <span class=\"heart\">",
-"                <img src=\"http://abgne.tw/wp-content/uploads/2014/01/css3-draw-heart-icon-2.png\" alt=\"\">"+love_number+"</span>",
-"            <span class=\"heat\">",
-"                <img src=\"http://pic.qiantucdn.com/58pic/13/84/39/28Q58PICwI4_1024.png!qt324\" alt=\"\">"+jso_data[i]["animate_click"]+"</span>",
+"            <button id=\"purchase\" class=\"btn btn-success\">購買</button>",
 "            <div class=\"clear\"></div>",
 "            <p id='id' hidden>"+jso_data[i]["animate_id"]+"</p>",
 "            <p id='director' hidden>"+jso_data[i]["animate_director"]+"</p>",
@@ -194,6 +197,20 @@
                 }
             });
             $(this).html("<i class='fa fa-shopping-cart'></i>"+cart);
+        });
+        $("button#purchase").click(function(){
+            var animate_id=$(this).siblings("p#id").text();
+            var brought;
+            $.ajax({
+                type:"get",
+                url:"part/purchased.php",
+                async:false,
+                data:{id:animate_id},
+                success:function(data){
+                    brought=data;
+                }
+            });
+            $(this).text(brought);
         });
     });
 </script>

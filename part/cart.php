@@ -16,10 +16,10 @@
         $id=$_GET["id"];
         date_default_timezone_set("Asia/Taipei");
         $time=date("m-d-G-i");
-        $sql="SELECT * from cart where user_id=$user_id AND animate_id=$id";
+        $sql="SELECT * from cart where user_id=$user_id AND animate_id=$id AND cart_purchased=0";
         $result=$link->query($sql);
         if($result->num_rows>0){
-            $sql="DELETE from cart where user_id=$user_id and animate_id=$id";
+            $sql="DELETE from cart where user_id=$user_id and animate_id=$id AND cart_purchased=0";
             $link->query($sql);
             echo "放入購物車";
         }else{
