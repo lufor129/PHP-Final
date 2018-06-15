@@ -161,6 +161,17 @@
             }
         });
         for(var i=0;i<jso_data.length;i++){
+            var love_number;
+            var num=jso_data[i]["animate_id"];
+            $.ajax({
+                url:"part/lovenumber.php",
+                async: false,
+                type:"get",
+                data:{id:num},
+                success:function(data){
+                    love_number=data;
+                }
+            });
             p+=["<div class=\"comicblock\">",
 "        <div class=\"pic\">",
 "            <a href=\"javascript:void(0)\" data-toggle=\"modal\" data-target=\"#myModal\">",
@@ -171,7 +182,7 @@
 "            <h2 class=\"name\">"+jso_data[i]["animate_name"]+"</h2>",
 "            <h5 class=\"price\">價格: "+jso_data[i]["animate_price"]+"</h5>",
 "            <span class=\"heart\">",
-"                <img src=\"http://abgne.tw/wp-content/uploads/2014/01/css3-draw-heart-icon-2.png\" alt=\"\"> 1233</span>",
+"                <img src=\"http://abgne.tw/wp-content/uploads/2014/01/css3-draw-heart-icon-2.png\" alt=\"\">"+love_number+"</span>",
 "            <span class=\"heat\">",
 "                <img src=\"http://pic.qiantucdn.com/58pic/13/84/39/28Q58PICwI4_1024.png!qt324\" alt=\"\">"+jso_data[i]["animate_click"]+"</span>",
 "            <div class=\"clear\"></div>",
@@ -232,6 +243,7 @@
         $("button#favorite").click(function(){
             var animate_id=$(this).siblings("h3#animate_id").text();
             var love;
+            var love_number;
             $.ajax({
                 type:"get",
                 url:"part/love.php",
@@ -241,9 +253,23 @@
                     love=data;                        
                 }
             });
+            var x;
             $(this).html("<i class='fa fa-heart-o'></i>"+love);
         });
-        
+        $("button#joincart").click(function(){
+            var animate_id=$(this).siblings("h3#animate_id").text();
+            var cart;
+            $.ajax({
+                type:"get",
+                url:"part/cart.php",
+                async: false,
+                data:{id:animate_id},
+                success:function(data){
+                    cart=data;                        
+                }
+            });
+            $(this).html("<i class='fa fa-shopping-cart'></i>"+cart);
+        });
     });
     
 </script>

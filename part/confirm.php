@@ -17,7 +17,7 @@
         }else{
             $response[]="加入最愛";
         }
-        $sql="SELECT * from chart where user_id=$user_id AND animate_id=$id";
+        $sql="SELECT * from cart where user_id=$user_id AND animate_id=$id";
         $result2=$link->query($sql);
         if($result2->num_rows>0){
             $response[]="已放入購物車";
