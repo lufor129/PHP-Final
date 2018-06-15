@@ -1,0 +1,14 @@
+body{
+    font-family: 微軟正黑體;
+    font-size:20px;
+}
+a.navbar-brand{
+    font-size:30px;
+}
+div.container-fluid{
+    z-index:6000;
+    margin-bottom:71px;
+}
+a.nav-link{
+    font-size:22px;
+}
