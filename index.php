@@ -54,37 +54,37 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <!--寫一個get來傳遞想看漫畫-->
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <img src="https://www.gamewikia.com/uploads/2018/05/14/cover.640.360.af24cb8d24a089cda64d45a32dae9553.jpeg">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <img src="http://8comic.se/wp-content/uploads/2015/09/%E9%80%B2%E6%93%8A%E7%9A%84%E5%B7%A8%E4%BA%BA-640x360.jpg">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <img src="https://bnetproduct-a.akamaihd.net//2d/c911f6fbe51f8dd3085d612fb43089c0-overwatch-origins-640x360-zhtw.jpg">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="#">
+                    <a href="javascript:void(0)">
                         <img src="http://8comic.se/wp-content/uploads/2015/09/%E9%AD%94%E7%AC%9B-640x360.jpg">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="">
+                    <a href="javascript:void(0)">
                         <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3905512796,2920888282&fm=173&s=A033C634091272DCD49F0C4D030030FA&w=640&h=360&img.JPEG">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="">
+                    <a href="javascript:void(0)">
                         <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=4294592116,563774963&fm=173&s=1720F906D06154A45479E1DF03000021&w=640&h=360&img.JPEG">
                     </a>
                 </div>
                 <div class="carousel-item">
-                    <a href="">
+                    <a href="javascript:void(0)">
                         <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2983662931,863107453&fm=173&s=AF3A618598533A4F78B706830300B08F&w=640&h=360&img.JPEG">
                     </a>
                 </div>
@@ -100,7 +100,11 @@
             </a>
     </div>
     <hr>
-    <div class="content"></div>
+    <div class="content">
+        <div class="informationbox">
+
+        </div>
+    </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -150,12 +154,16 @@
 
 </html>
 <script>
-     var jso_data;
-    $("#heartblood").click(function(){
+    $(".dropdown-item").click(function(){
+        var jso_data;
+        var searchkey=$(this).attr("value");
+        console.log(searchkey);
         var p='';
         $.ajax({
             url:"part/search.php",
             async: false,
+            type:"get",
+            data:{key:searchkey},
             success:function(data){
                 jso_data=JSON.parse(data);
             }
@@ -195,7 +203,56 @@
 "        </div>",
 "    </div>"].join("");
         }
-        console.log(jso_data);
+        document.querySelector(".content").innerHTML=p;
+    });
+    $("#searchbutton").click(function(){
+        var jso_data;
+        var searchkey=$(this).siblings("input#search").val();
+        var p='';
+        $.ajax({
+            url:"part/searchbutton.php",
+            async: false,
+            type:"get",
+            data:{key:searchkey},
+            success:function(data){
+                jso_data=JSON.parse(data);
+            }
+        });
+        for(var i=0;i<jso_data.length;i++){
+            var love_number;
+            var num=jso_data[i]["animate_id"];
+            $.ajax({
+                url:"part/lovenumber.php",
+                async: false,
+                type:"get",
+                data:{id:num},
+                success:function(data){
+                    love_number=data;
+                }
+            });
+            p+=["<div class=\"comicblock\">",
+"        <div class=\"pic\">",
+"            <a href=\"javascript:void(0)\" data-toggle=\"modal\" data-target=\"#myModal\">",
+"                <img src=\""+jso_data[i]["animate_photo"]+"\" alt=\"\" id=\"comicIMG\">",
+"            </a>",
+"        </div>",
+"        <div class=\"message\">",
+"            <h2 class=\"name\">"+jso_data[i]["animate_name"]+"</h2>",
+"            <h5 class=\"price\">價格: "+jso_data[i]["animate_price"]+"</h5>",
+"            <span class=\"heart\">",
+"                <img src=\"http://abgne.tw/wp-content/uploads/2014/01/css3-draw-heart-icon-2.png\" alt=\"\">"+love_number+"</span>",
+"            <span class=\"heat\">",
+"                <img src=\"http://pic.qiantucdn.com/58pic/13/84/39/28Q58PICwI4_1024.png!qt324\" alt=\"\">"+jso_data[i]["animate_click"]+"</span>",
+"            <div class=\"clear\"></div>",
+"            <p id='id' hidden>"+jso_data[i]["animate_id"]+"</p>",
+"            <p id='director' hidden>"+jso_data[i]["animate_director"]+"</p>",
+"            <p id='company' hidden>"+jso_data[i]["animate_company"]+"</p>",
+"            <p id='description' hidden>"+jso_data[i]["animate_description"]+"</p>",
+"            <p id='episode' hidden>"+jso_data[i]["animate_episode"]+"</p>",
+"            <p id='click' hidden>"+jso_data[i]["animate_click"]+"</p>",
+"        </div>",
+"    </div>"].join("");
+        }
         document.querySelector(".content").innerHTML=p;
     });
     $(function () {

@@ -59,18 +59,19 @@
                         看漫畫
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item disabled" href="#">分類</a>
-                        <a class="dropdown-item" href="javascript:void(0)" id="heartblood">熱血</a>
-                        <a class="dropdown-item" href="javascript:void(0)">校園</a>
-                        <a class="dropdown-item" href="javascript:void(0)">奇幻</a>
-                        <a class="dropdown-item" href="javascript:void(0)">搞笑</a>
-                        <a class="dropdown-item" href="javascript:void(0)">日常</a>
-                        <a class="dropdown-item" href="javascript:void(0)">愛情</a>
+                        <a class="dropdown-item disabled">分類</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="all">全部</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="1">熱血</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="2">校園</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="3">奇幻</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="4">搞笑</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="5">日常</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="6">愛情</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item disabled" href="#">排名</a>
-                        <a class="dropdown-item" href="javascript:void(0)">點擊數</a>
-                        <a class="dropdown-item" href="javascript:void(0)">收藏數</a>
-                        <a class="dropdown-item" href="javascript:void(0)">最多人買</a>
+                        <a class="dropdown-item disabled">排名</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="click">點擊數</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="love">最愛數</a>
+                        <a class="dropdown-item" href="javascript:void(0)" value="buy">收藏數</a>
                       </div>
                     </li>
                     <?php
@@ -89,10 +90,10 @@
                     
                     ?>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜尋漫畫</button>
-                  </form>
+                  <div class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" id="search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" id="searchbutton" type="submit">搜尋漫畫</button>
+                  </div>
                 </div>
         </nav>
     </div>
