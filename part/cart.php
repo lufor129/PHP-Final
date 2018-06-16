@@ -16,16 +16,22 @@
         $id=$_GET["id"];
         date_default_timezone_set("Asia/Taipei");
         $time=date("m-d-G-i");
-        $sql="SELECT * from cart where user_id=$user_id AND animate_id=$id AND cart_purchased=0";
-        $result=$link->query($sql);
+        $sql="SELECT * from cart where user_id=$user_id and animate_id=$id and cart_purchased=1";
+        $reuslt=$link->query($sql);
         if($result->num_rows>0){
-            $sql="DELETE from cart where user_id=$user_id and animate_id=$id AND cart_purchased=0";
-            $link->query($sql);
-            echo "放入購物車";
+            echo "已購買";
         }else{
-            $sql="INSERT INTO cart (`user_id` ,`animate_id`,`cart_time`,`cart_purchased`) VALUES ('$user_id','$id','$time',0)";
-            $link->query($sql);
-            echo "已放入購物車";
+            $sql="SELECT * from cart where user_id=$user_id AND animate_id=$id AND cart_purchased=0";
+            $result=$link->query($sql);
+            if($result->num_rows>0){
+                $sql="DELETE from cart where user_id=$user_id and animate_id=$id AND cart_purchased=0";
+                $link->query($sql);
+                echo "放入購物車";
+            }else{
+                $sql="INSERT INTO cart (`user_id` ,`animate_id`,`cart_time`,`cart_purchased`) VALUES ('$user_id','$id','$time',0)";
+                $link->query($sql);
+                echo "已放入購物車";
+            }
         }
     }
 

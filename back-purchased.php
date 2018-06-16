@@ -27,7 +27,7 @@
     <div class="wrap">
         <div class="card">
             <h3 class="card-header"><i class="fa fa-gift"></i> My purchased</h3>
-            <div class="card-body" style="padding:6%;padding-top:3%">
+            <div class="card-body" style="padding:6%;padding-top:3%"></div>
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -9,6 +9,7 @@
         $user_id=$row["user_id"];
     }
     $sql="SELECT * from cart where user_id=$user_id AND animate_id=$id AND cart_purchased=0";
+    $result=$link->query($sql);
     if($result->num_rows>0){
         $sql="UPDATE cart SET cart_purchased=1 where user_id=$user_id AND animate_id=$id";
         $link->query($sql);
