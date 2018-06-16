@@ -12,4 +12,5 @@
         die("無法連接到伺服器");
     }
 
+    mysqli_query($link,'SET NAMES utf8');
 ?>

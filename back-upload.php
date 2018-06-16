@@ -115,7 +115,7 @@
             $changename="image/animate-$name.".$filepath["extension"];
             copy($_FILES["picture"]["tmp_name"],$changename);
             date_default_timezone_set("Asia/Taipei");
-            $time=date("m-d-G-i");
+            $time=date("m-d");
             $sql="INSERT INTO `animate` (`animate_name`, `animate_price`, `animate_director`,`animate_company`, `animate_photo`, `animate_description`, `animate_episode`,`animate_click`,`animate_time`) VALUES ('$name', $price, '$director', '$company','$changename', '$description',$episode, 0, '$time')";
             if($link->query($sql)==true){
                 $sql="SELECT * from animate where animate_name='$name'";

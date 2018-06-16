@@ -70,7 +70,7 @@
             $changename="image/user-$account.".$filepath["extension"];
             copy($_FILES["photo"]["tmp_name"],$changename);
             date_default_timezone_set("Asia/Taipei");
-            $time=date("m-d-G-i");
+            $time=date("m-d");
             $sql2="INSERT INTO user (user_account,user_password,user_photo,user_money,user_time) VALUES ('$account','$password','$changename',0,'$time')";
             if($link->query($sql2)==true){
                 $_SESSION["login"]=true;

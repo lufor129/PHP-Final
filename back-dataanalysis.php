@@ -39,6 +39,24 @@
             array_push($a_name,$row["animate_name"]);
             array_push($a_number,$row["animate_click"]);
         }
+
+        $b_name=array();
+        $b_number=array();
+        $sql2="SELECT COUNT(*) as num,feature.* from feature_detail left join feature on feature_detail.feature_id=feature.feature_id GROUP by feature_id";
+        $result2=$link->query($sql2);
+        while($row=$result2->fetch_assoc()){
+            array_push($b_name,$row["feature_name"]);
+            array_push($b_number,$row["num"]);
+        }
+
+        $c_name=array();
+        $c_number=array();
+        $sql3="SELECT count(*) as num,user.user_time from user group by user.user_time";
+        $result3=$link->query($sql3);
+        while($row=$result3->fetch_assoc()){
+            array_push($c_name,$row["user_time"]);
+            array_push($c_number,$row["num"]);
+        }
     ?>
     <div class="wrap">
         <div class="card" >
@@ -51,6 +69,17 @@
                 </div>
                 <div class="chartblock" >
                     <canvas id="chart2" width="1" height="1"></canvas>
+                </div>
+                <h3 class="title">類別數量分析</h3>
+                <div class="chartblock" >
+                    <canvas id="chart3"  width="1" height="1"></canvas>
+                </div>
+                <div class="chartblock" >
+                    <canvas id="chart4" width="1" height="1"></canvas>
+                </div>
+                <h3 class="title">使用者註冊時間分析</h3>
+                <div class="chartblock2" >
+                    <canvas id="chart5"  width="1" height="1"></canvas>
                 </div>
             </div>
         </div>
@@ -79,7 +108,7 @@
     });
     var chart2=$("#chart2");
     var chartone=new Chart(chart2,{
-        type:'horizontalBar',
+        type:'bar',
         data:{
             datasets:[{
                 data:<?php echo json_encode($a_number) ?>,
@@ -94,6 +123,53 @@
             }],
             labels:<?php echo json_encode($a_name) ?>,
             borderWidth: 1
+        }
+    });
+    var chart3=$("#chart3");
+    var chartone=new Chart(chart3,{
+        type:'horizontalBar',
+        data:{
+            datasets:[{
+                data:<?php echo json_encode($b_number) ?>,
+                backgroundColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderColor: 'rgb(255, 255, 255)',
+                label:'類別數量分析'
+            }],
+            labels:<?php echo json_encode($b_name) ?>,
+            borderWidth: 1
+        }
+    });
+    var chart4=$("#chart4");
+    var chartone=new Chart(chart4,{
+        type:'radar',
+        data:{
+            datasets:[{
+                data:<?php echo json_encode($b_number) ?>,
+                borderColor:'rgba(75, 192, 192, 1)',
+                backgroundColor:'rgba(152,245,255,0.2)',
+                label:'類別數量分析'
+            }],
+            labels:<?php echo json_encode($b_name) ?>,
+        }
+    });
+    var chart5=$("#chart5");
+    var chartone=new Chart(chart5,{
+        type:'line',
+        data:{
+            datasets:[{
+                data:<?php echo json_encode($c_number) ?>,
+                backgroundColor: 'rgba(152,245,255,0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                label:'會員註冊數量分析'
+            }],
+            labels:<?php echo json_encode($c_name) ?>,
+            borderWidth: 1,
+            
         }
     });
 </script>
