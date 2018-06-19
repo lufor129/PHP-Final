@@ -17,7 +17,7 @@
         date_default_timezone_set("Asia/Taipei");
         $time=date("m-d-G-i");
         $sql="SELECT * from cart where user_id=$user_id and animate_id=$id and cart_purchased=1";
-        $reuslt=$link->query($sql);
+        $result=$link->query($sql);
         if($result->num_rows>0){
             echo "已購買";
         }else{

@@ -20,6 +20,10 @@
         h3.title{
             text-align:center;
         }
+        .chartblock2{
+            width:80%;
+            margin:0 auto;
+        }
     </style>
 </head>
 <body>
@@ -31,7 +35,7 @@
         }else{
             header("Refresh:0;url='index.php'");
         }
-        $sql1="SELECT * from animate";
+        $sql1="SELECT * FROM `animate` ORDER BY animate_click DESC LIMIT 10";
         $a_name=array();
         $a_number=array();
         $result=$link->query($sql1);
@@ -63,7 +67,7 @@
             <h3 class="card-header">
                 <i class="fa fa-line-chart"></i> 數據分析</h3>
             <div class="card-body">
-                <h3 class="title">點擊數分析</h3>
+                <h3 class="title">點擊數最高十個</h3>
                 <div class="chartblock" >
                     <canvas id="chart1"  width="1" height="1"></canvas>
                 </div>
@@ -90,7 +94,7 @@
     $("#dataanalysis").addClass("active");
     var chart1=$("#chart1");
     var chartone=new Chart(chart1,{
-        type:"pie",
+        type:"doughnut",
         data:{
             datasets:[{
                 data:<?php echo json_encode($a_number) ?>,
@@ -98,7 +102,13 @@
                     'rgba(255,99,132,1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)'
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255,222,173,1)',
+                    'rgba(0 ,139 ,139,1)',
+                    'rgba(0,0,128,1)',
+                    'rgba(0,255,127,1)',
+                    'rgba(205 ,149 ,12,1)',
+                    'rgba(138, 43, 226,1)'
                 ],
                 borderColor: 'rgb(255, 255, 255)'
             }],
@@ -116,7 +126,13 @@
                     'rgba(255,99,132,1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)'
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255,222,173,1)',
+                    'rgba(0 ,139 ,139,1)',
+                    'rgba(0,0,128,1)',
+                    'rgba(0,255,127,1)',
+                    'rgba(205 ,149 ,12,1)',
+                    'rgba(138, 43, 226,1)'
                 ],
                 label: "點擊排名分析",
                 borderColor: 'rgb(255, 255, 255)'
@@ -127,7 +143,7 @@
     });
     var chart3=$("#chart3");
     var chartone=new Chart(chart3,{
-        type:'horizontalBar',
+        type:'pie',
         data:{
             datasets:[{
                 data:<?php echo json_encode($b_number) ?>,
@@ -135,7 +151,9 @@
                     'rgba(255,99,132,1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)'
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255,222,173,1)',
+                    'rgba(0 ,139 ,139,1)'
                 ],
                 borderColor: 'rgb(255, 255, 255)',
                 label:'類別數量分析'
