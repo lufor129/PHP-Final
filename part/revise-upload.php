@@ -14,7 +14,7 @@
         if(($_FILES["picture"]["error"]==0)){
             $upload="../image/".$_FILES["picture"]["name"];
             $filepath=pathinfo($upload);
-            $changename="image/user-$account.".$filepath["extension"];
+            $changename="image/animate-$name.".$filepath["extension"];
             copy($_FILES["picture"]["tmp_name"],"../".$changename);
             $sql="UPDATE animate SET animate_name='$name',animate_price=$price,animate_description='$description',animate_photo='$changename',animate_director='$director',animate_company='$company',animate_episode=$episode where animate_id=$id";
             $link->query($sql);

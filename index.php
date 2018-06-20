@@ -113,7 +113,7 @@
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        這份專題花了主code一個月時間，其中還大改了一次需求，但我想完成度應該是蠻高的(除了不能來看漫畫)，希望教授們會喜歡。<br>
+                        這份專題花了主code一個月時間，其中還大改了一次需求，但我想完成度應該是蠻高的(除了不能真的用來看漫畫)，希望教授們會喜歡。<br>
                         專題也已經放上Github，未來供學弟妹們參(ㄔㄠ)考(ㄒㄧ)。 <br>
                         <br>
                         <br>
@@ -133,9 +133,8 @@
                 <div class="card-body">
                     前端: HTML、CSS、JavaScript、JQuery、Boostrap4、AJAX <br>
                     後端: PHP、SQL <br>
-
-                    智輝:<br>
-                    其中很多新技術是第一次接觸，這分專題其實就是不斷的在挖坑跌坑，但專題完成的那一霎會覺得自己真的成長了不少，收穫滿滿。
+                    <br>
+                    其中很多新技術是第一次接觸，這份專題其實就是不斷的在挖坑跌坑，但專題完成的那一刻會覺得自己真的成長了不少，收穫滿滿。
                 </div>
                 </div>
             </div>

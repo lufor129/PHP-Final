@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <a href="index.php"><h1 id="title">肥宅漫畫</h1></a>
+    <a href="index.php"><h1 id="title">肥宅動畫</h1></a>
     <div class="content">
         <div class="jumbotron jumbotron-fluid">
             <div class="login">
@@ -44,7 +44,7 @@
                 </form>
             </div>
             <div class="container">
-                <h1 class="display-4">肥宅漫畫</h1>
+                <h1 class="display-4">肥宅動畫</h1>
                 <p class="lead">只有肥宅最懂肥宅，找漫畫?選肥宅。肥宅漫畫想看什麼這裡全都有</p>
             </div>
         </div>
@@ -70,7 +70,7 @@
             $changename="image/user-$account.".$filepath["extension"];
             copy($_FILES["photo"]["tmp_name"],$changename);
             date_default_timezone_set("Asia/Taipei");
-            $time=date("m-d-G-i");
+            $time=date("m-d");
             $sql2="INSERT INTO user (user_account,user_password,user_photo,user_money,user_time) VALUES ('$account','$password','$changename',0,'$time')";
             if($link->query($sql2)==true){
                 $_SESSION["login"]=true;

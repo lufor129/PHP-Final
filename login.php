@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <a href="index.php"><h1 id="title">肥宅漫畫</h1></a>
+    <a href="index.php"><h1 id="title">肥宅動畫</h1></a>
     <div class="content">
         <div class="jumbotron jumbotron-fluid">
             <div class="login">
@@ -36,8 +36,8 @@
                 </form>
             </div>
             <div class="container">
-                <h1 class="display-4">肥宅漫畫</h1>
-                <p class="lead">只有肥宅最懂肥宅，找漫畫?選肥宅。肥宅漫畫想看什麼這裡全都有</p>
+                <h1 class="display-4">肥宅動畫</h1>
+                <p class="lead">只有肥宅最懂肥宅，找動畫?選肥宅。肥宅動畫想看什麼這裡全都有</p>
             </div>
         </div>
     </div>
